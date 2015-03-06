@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150306020529) do
   create_table "tickets", force: :cascade do |t|
     t.integer  "promotion_id"
     t.decimal  "discount"
-    t.decimal  "minimum_total_spend"
+    t.decimal  "min_total_spend"
     t.integer  "group_size"
     t.boolean  "active"
     t.datetime "created_at"
