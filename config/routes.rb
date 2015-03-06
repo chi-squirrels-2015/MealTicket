@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root "restaurants#index"
 
   resources :restaurants, only: [:new, :create] do
@@ -9,4 +10,5 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard', to: 'restaurants#show', as: :dashboard
+
 end
