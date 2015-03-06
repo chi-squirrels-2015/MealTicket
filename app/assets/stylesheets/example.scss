@@ -10,4 +10,19 @@
 .navbar {
   background-color: #FF7800;
   border-radius: 0px;
+  margin-bottom: 0px;
+}
+
+.jumbotron {
+  height: 400px;
+  background-image: url("exampleimage.png");
+  background-position: 0 3000;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  margin-bottom: 0px;
+}
+
+#home-splash {
+  background-color: #FF7800;
+  height: 600px;
 }
