@@ -3,6 +3,12 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+  def search
+    # sort: 0 is best match, 1 is location, 2 is highest rating
+    parameters = { sort: "0", term: params["restaurant"], limit: 3 }
+    render json: Yelp.client.search(params["zipcode"], parameters).businesses
+  end
+
   def new
     @restaurant = Restaurant.new
   end

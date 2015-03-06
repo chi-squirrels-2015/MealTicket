@@ -27,6 +27,9 @@ gem 'rails_12factor', group: :production
 
 # Bootstrap Sass
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'yelp', require: 'yelp'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
