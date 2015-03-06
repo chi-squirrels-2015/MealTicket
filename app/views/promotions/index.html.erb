@@ -1,0 +1,25 @@
+<h1><%= @restaurant.name %></h1>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Min Group</th>
+    <th>Max Group</th>
+    <th>Preferred Size</th>
+    <th>Max Discount</th>
+    <th>Min Spend</th>
+    <th>Loss Tolerance</th>
+  </thead>
+  <tbody>
+    <% @restaurant.deals.each do |deal| %>
+    <tr>
+      <td><%= deal.name %></td>
+      <td><%= deal.min_group_size %></td>
+      <td><%= deal.max_group_size %></td>
+      <td><%= deal.preferred_group_size %></td>
+      <td><%= deal.max_discount %></td>
+      <td><%= deal.min_spend %></td>
+      <td><%= deal.loss_tolerance %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
