@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
-  def show
-    @restaurant = Restaurant.find(1)
+  def index
+    @restaurants = Restaurant.all
   end
 
   def new
@@ -9,17 +9,11 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-
-    if @restaurant.save
-      redirect_to @restaurant
-    else
-      render :new
-    end
   end
 
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :cuisine)
+    params.require(:restaurant).permit(:yelp_id, :name, :display_phone, :address, :zipcode, :cuisine)
   end
 end
