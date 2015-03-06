@@ -7,8 +7,8 @@ class CreatePromotions < ActiveRecord::Migration
 
       t.integer :min_group_size
       t.integer :max_group_size
+      t.integer :preferred_group_size
       t.integer :loss_tolerance
-      t.integer :preferred_size
 
       t.decimal :min_spend
       t.decimal :max_discount
