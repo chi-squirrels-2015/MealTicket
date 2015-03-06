@@ -1,7 +1,15 @@
 class Promotion < ActiveRecord::Base
   has_many :tickets
 
-  after_create :generate_tickets
+  # after_create :generate_tickets
+
+  validates :name, presence: true
+  validates :min_group_size, presence: true
+  validates :max_group_size, presence: true
+  validates :preferred_group_size, presence: true
+  validates :min_spend, presence: true
+  validates :loss_tolerance, presence: true
+  validates :max_discount, presence: true
 
   def self.minimum_discount
     0.10
