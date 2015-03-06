@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150306020529) do
 
   # These are extensions that must be enabled in order to support this database
@@ -30,6 +29,17 @@ ActiveRecord::Schema.define(version: 20150306020529) do
     t.datetime "updated_at"
   end
 
+  create_table "restaurants", force: :cascade do |t|
+    t.string   "name"
+    t.string   "cuisine"
+    t.string   "phone_number"
+    t.string   "address"
+    t.integer  "zip_code"
+    t.string   "location"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.integer  "promotion_id"
     t.decimal  "discount"
@@ -39,4 +49,5 @@ ActiveRecord::Schema.define(version: 20150306020529) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
 end
