@@ -1,0 +1,52 @@
+
+<h1>New Promotion</h1>
+<%= form_for @promotion, :url => new_restaurant_promotion_path do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <p>
+
+    <label for="amount">Set Min and Max Group Size:</label>
+    <input type="text" id="range_amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  </p>
+
+  <div id="group_size_slider" style="width:250px;">
+  </div>
+  <br>
+  <p>
+    <label for="amount">Preferred Group Size</label>
+    <input type="text" id="pref_group_size" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  </p>
+
+  <div id="pref_group_size_slider" style="width:250px;">
+  </div>
+  <br>
+  <p>
+    <label for="amount">Loss Tolerance</label>
+    <input type="text" id="loss_amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  </p>
+
+  <div id="loss_slider" style="width:250px;">
+  </div>
+  <br>
+  <p>
+    <label for="amount">Minimum Spend (per person):</label>
+    <input type="text" id="min_spend_amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  </p>
+
+  <div id="min_spend_slider" style="width:250px;">
+  </div>
+  <br>
+  <p>
+    <label for="amount">Maximum Discount</label>
+    <input type="text" id="max_disc_amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  </p>
+
+  <div id="max_disc_slider" style="width:250px;">
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.submit %>
+  </div>
+<% end %>
