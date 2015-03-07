@@ -1,5 +1,5 @@
 var YelpSearchView = Backbone.View.extend({
-  this.template:  JST["templates/yelp_search"],
+  template: JST["templates/yelp_search"],
 
   events: {
     "submit #yelp": "searchYelp"
@@ -13,9 +13,12 @@ var YelpSearchView = Backbone.View.extend({
 
   searchYelp: function(e) {
     e.preventDefault();
-
-    var collection = new RestaurantsCollection($(this).serialize());
-    collection.fetch();
-    this.$.el.hide();
+    var query = this.$el.find("#yelp").serialize();
+    this.collection = new RestaurantsCollection(query);
+    this.collection.fetch().success(function(response) {
+      this.$el.hide();
+      this.$el.html(JST["templates/yelp_results"]({collection: this.collection}));
+      this.$el.show();
+    }.bind(this));
   }
 });

@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Address</th>
+    <th>Cuisine</th>
+    <th>Select</th>
+  </thead>
+  <% collection.models.forEach(function(result) { %>
+  <tr>
+    <td><%= result.attributes.name %></td>
+    <td><%= result.attributes.display_phone %></td>
+    <td><%= result.attributes.address %></td>
+    <td><%= result.attributes.cuisine %></td>
+    <td><input type="radio"></td>
+  </tr>
+  <% }); %>
+</table>

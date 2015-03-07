@@ -22,10 +22,7 @@
 //= require_tree .
 
 $(document).ready(function() {
-  $("#yelp").on('submit', function(e) {
-    e.preventDefault();
-    console.log("Click has been received");
-    collection1 = new RestaurantsCollection($(this).serialize());
-    collection1.fetch();
-  });
+  var yelpSearchView = new YelpSearchView();
+  yelpSearchView.render();
+  $("#search").append(yelpSearchView.el);
 });
