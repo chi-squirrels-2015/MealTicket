@@ -31,8 +31,7 @@ $(document).ready(function() {
     $("#search-results").hide();
     
     var resultIndex = $(this).data("result-index");
-
-    if(resultIndex) {
+    if(resultIndex !== undefined) {
       var newRestaurantView = new NewRestaurantView({
         model: yelpSearchView.collection.models[resultIndex]
       });
