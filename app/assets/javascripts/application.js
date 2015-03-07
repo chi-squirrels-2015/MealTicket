@@ -26,14 +26,22 @@ $(document).ready(function() {
   yelpSearchView.render();
   $("#search").append(yelpSearchView.el);
 
-  $("body").on("click", "a.result", function(e) {
-    $("#search").hide();
+  $("#search").on("click", "a.result", function(e) {
     e.preventDefault();
+    $("#search-results").hide();
+    
+    var resultIndex = $(this).data("result-index");
+    if(resultIndex !== undefined) {
+      var newRestaurantView = new NewRestaurantView({
+        model: yelpSearchView.collection.models[resultIndex]
+      });
+    } else {
+      var newRestaurantView = new NewRestaurantView({
+        model: new Restaurant()
+      });
+    }
 
-    var newRestaurantView = new NewRestaurantView({
-      model: yelpSearchView.collection.models[$(this).data("result-index")]
-    });
     newRestaurantView.render();
-    $("body").append(newRestaurantView.el);
+    $("#search").append(newRestaurantView.el);
   });
 });

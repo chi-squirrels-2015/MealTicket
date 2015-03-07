@@ -1,18 +1,23 @@
-<table>
-  <thead>
-    <th>Name</th>
-    <th>Phone</th>
-    <th>Address</th>
-    <th>Cuisine</th>
-    <th>Select</th>
-  </thead>
-  <% collection.models.forEach(function(result, i) { %>
-  <tr>
-    <td><%= result.attributes.name %></td>
-    <td><%= result.attributes.display_phone %></td>
-    <td><%= result.attributes.address %></td>
-    <td><%= result.attributes.cuisine %></td>
-    <td><a href="#" data-result-index="<%= i %>" class="result">Choose This Profile</a></td>
-  </tr>
-  <% }); %>
-</table>
+<div id="search-results">
+  <h3>Are one of these businesses yours?</h3>
+  <p>Click the claim button to import your information.</p>
+  <table class="table table-hover">
+    <thead>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Cuisine</th>
+      <th></th>
+    </thead>
+    <% collection.models.forEach(function(result, i) { %>
+    <tr>
+      <td><%= result.attributes.name %></td>
+      <td><%= result.attributes.display_phone %></td>
+      <td><%= result.attributes.address %></td>
+      <td><%= result.attributes.cuisine %></td>
+      <td><a href="#" class="result btn-sm btn-primary" data-result-index="<%= i %>" >Claim this business</a></td>
+    </tr>
+    <% }); %>
+  </table>
+  <a href="#" class="result">Don't see your business listed? Click here</a>
+</div>
