@@ -1,34 +1,21 @@
-<div class="table ticket" id="tickettable" style="display: none;">
-  <div class="title">
-    <p>Ticket Details</p>
-  </div>
-    <div class="heading">
-      <div class="cell">
-        <p>Discount</p>
-      </div>
-      <div class="cell">
-        <p>Minimum Total Spend</p>
-      </div>
-      <div class="cell">
-        <p>Group Size</p>
-      </div>
-      <div class="cell">
-        <p>Purchaser</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="cell">
-        <p>"Discount"</p>
-      </div>
-      <div class="cell">
-        <p>"min_total_spend"</p>
-      </div>
-      <div class="cell">
-        <p>group_size</p>
-      </div>
-      <div class="cell">
-        <p>"purchaser"</p>
-      </div>
-    </div>
+<div class="table-responsive" style="display: none;">
+  <table class="table">
+    <caption>Ticket Details</caption>
+    <thead>
+      <th>Discount</th>
+      <th>Min Total Spend</th>
+      <th>Group Size</th>
+      <th>Purchaser Name</th>
+    </thead>
+    <tbody>
+      <% promotion.tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.discount.to_f %></td>
+        <td><%= ticket.min_total_spend %></td>
+        <td><%= ticket.group_size %></td>
+        <td>Purchaser</td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
