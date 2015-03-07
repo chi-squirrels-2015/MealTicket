@@ -6,13 +6,13 @@
     <th>Cuisine</th>
     <th>Select</th>
   </thead>
-  <% collection.models.forEach(function(result) { %>
+  <% collection.models.forEach(function(result, i) { %>
   <tr>
     <td><%= result.attributes.name %></td>
     <td><%= result.attributes.display_phone %></td>
     <td><%= result.attributes.address %></td>
     <td><%= result.attributes.cuisine %></td>
-    <td><input type="radio"></td>
+    <td><a href="#" data-result-index="<%= i %>" class="result">Choose This Profile</a></td>
   </tr>
   <% }); %>
 </table>
