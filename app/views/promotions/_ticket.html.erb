@@ -10,8 +10,8 @@
     <tbody>
       <% promotion.tickets.each do |ticket| %>
       <tr>
-        <td><%= ticket.discount.to_f %></td>
-        <td><%= ticket.min_total_spend %></td>
+        <td><%= number_to_percentage(ticket.discount * 100, precision: 2) %></td>
+        <td><%= number_to_currency(ticket.min_total_spend.to_f, locale: :en) %></td>
         <td><%= ticket.group_size %></td>
         <td>Purchaser</td>
       </tr>
@@ -19,3 +19,4 @@
     </tbody>
   </table>
 </div>
+
