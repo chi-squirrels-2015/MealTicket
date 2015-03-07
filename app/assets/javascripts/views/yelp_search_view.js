@@ -17,7 +17,13 @@ var YelpSearchView = Backbone.View.extend({
     this.collection = new RestaurantsCollection(query);
     this.collection.fetch().success(function(response) {
       this.$el.find("#yelp-search").hide();
-      this.$el.append(JST["templates/yelp_results"]({collection: this.collection}));
+      if(response.length === 0) {
+        var newRestaurantView = new NewRestaurantView({ model: new Restaurant() });
+        newRestaurantView.render();
+        this.$el.append(newRestaurantView.el);
+      } else {
+        this.$el.append(JST["templates/yelp_results"]({collection: this.collection}));
+      }
     }.bind(this));
   }
 });

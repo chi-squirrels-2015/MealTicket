@@ -29,11 +29,20 @@ $(document).ready(function() {
   $("#search").on("click", "a.result", function(e) {
     e.preventDefault();
     $("#search-results").hide();
+    
+    var resultIndex = $(this).data("result-index");
 
-    var newRestaurantView = new NewRestaurantView({
-      model: yelpSearchView.collection.models[$(this).data("result-index")]
-    });
+    if(resultIndex) {
+      var newRestaurantView = new NewRestaurantView({
+        model: yelpSearchView.collection.models[resultIndex]
+      });
+    } else {
+      var newRestaurantView = new NewRestaurantView({
+        model: new Restaurant()
+      });
+    }
+
     newRestaurantView.render();
-    $("body").append(newRestaurantView.el);
+    $("#search").append(newRestaurantView.el);
   });
 });

@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
   end
 
   def search_yelp
-    parameters = { sort: "0", term: params["business-name"], limit: 3 }
+    parameters = { sort: "0", term: params["business-name"], limit: 3, category_filter: "restaurants,bars" }
     render json: Yelp.client.search(params["location"], parameters).businesses
   end
 

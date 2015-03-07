@@ -1,34 +1,36 @@
-<form id="restaurant" action="/restaurants" method="post">
-  <input type="hidden" name="yelp_id" value='<%= yelp_id %>' />
-  <div class="form-group row">
-    <label for="restaurant-name" class="col-md-2 control-label">Name:</label>
-    <div class="col-md-6">
-      <input type="text" id="restaurant-name" name="name" value="<%= name %>"/>
+<div class="container">
+  <form id="restaurant" action="/restaurants" method="post">
+    <input type="hidden" name="yelp_id" value='<%= yelp_id %>' />
+    <div class="form-group row">
+      <label for="restaurant-name" class="col-md-2 control-label">Name:</label>
+      <div class="col-md-6">
+        <input type="text" id="restaurant-name" name="name" value="<%= name %>"/>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="cuisine-name" class="col-md-2 control-label">Cuisine:</label>
-    <div class="col-md-6">
-      <input type="text" id="cuisine-name" name="cuisine" value="<%= cuisine %>"/>
+    <div class="form-group row">
+      <label for="cuisine-name" class="col-md-2 control-label">Cuisine:</label>
+      <div class="col-md-6">
+        <input type="text" id="cuisine-name" name="cuisine" value="<%= cuisine %>"/>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="display-phone" class="col-md-2 control-label">Phone Number:</label>
-    <div class="col-md-6">
-      <input type="text" id="display-phone" name="display_phone" value="<%= display_phone %>" />
+    <div class="form-group row">
+      <label for="display-phone" class="col-md-2 control-label">Phone Number:</label>
+      <div class="col-md-6">
+        <input type="text" id="display-phone" name="display_phone" value="<%= display_phone %>" />
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="address" class="col-md-2 control-label">Address:</label>
-    <div class="col-md-6">
-      <input type="text" id="address" name="address" value="<%= address %>"/>
+    <div class="form-group row">
+      <label for="address" class="col-md-2 control-label">Address:</label>
+      <div class="col-md-6">
+        <input type="text" id="address" name="address" value="<%= address %>"/>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="zipcode" class="col-md-2 control-label">Location:</label>
-    <div class="col-md-6">
-      <input type="text" id="zipcode" name="zipcode" value="<%= zipcode %>"/>
+    <div class="form-group row">
+      <label for="zipcode" class="col-md-2 control-label">Location:</label>
+      <div class="col-md-6">
+        <input type="text" id="zipcode" name="zipcode" value="<%= zipcode %>"/>
+      </div>
     </div>
-  </div>
-  <button class="btn btn-primary">Create Your Account</button>
-</form>
+    <button class="btn btn-primary">Create Your Account</button>
+  </form>
+</div>
