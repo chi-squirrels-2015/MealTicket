@@ -6,32 +6,46 @@
       <%= f.text_field :name %>
     </div>
     <p>
-      <label for="amount">Set Min and Max Group Size</label>
-      <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+      <label for="amount">Set Min and Max Group Size:</label>
+      <input type="text" id="range_amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
     </p>
 
-    <div id="group_size_slider">
+    <div id="group_size_slider" style="width:250px;">
     </div>
+    <br>
+    <p>
+      <label for="amount">Preferred Group Size</label>
+      <input type="text" id="pref_group_size" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    </p>
 
+    <div id="pref_group_size_slider" style="width:250px;">
+    </div>
+    <br>
+    <p>
+      <label for="amount">Loss Tolerance</label>
+      <input type="text" id="loss_amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    </p>
 
+    <div id="loss_slider" style="width:250px;">
+    </div>
+    <br>
+    <p>
+      <label for="amount">Minimum Spend (per person):</label>
+      <input type="text" id="min_spend_amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    </p>
 
+    <div id="min_spend_slider" style="width:250px;">
+    </div>
+    <br>
+    <p>
+      <label for="amount">Maximum Discount</label>
+      <input type="text" id="max_disc_amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    </p>
 
-    <div class="form-group">
-      <%= f.label :preferred_group_size %>
-      <%= f.text_field :preferred_group_size %>
+    <div id="max_disc_slider" style="width:250px;">
     </div>
-    <div class="form-group">
-      <%= f.label :loss_tolerance %>
-      <%= f.text_field :loss_tolerance %>
-    </div>
-    <div class="form-group">
-      <%= f.label :min_spend %>
-      <%= f.text_field :min_spend %>
-    </div>
-    <div class="form-group">
-      <%= f.label :max_discount %>
-      <%= f.text_field :max_discount %>
-    </div>
+    <br>
+
     <div class="form-group">
       <%= f.submit %>
     </div>
