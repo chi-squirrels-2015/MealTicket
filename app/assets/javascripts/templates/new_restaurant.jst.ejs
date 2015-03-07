@@ -1,0 +1,10 @@
+<form id="restaurant" action="/restaurants" method="post">
+  <input name="authenticity_token" type="hidden" value="token_value">
+  <input type="hidden" name="yelp_id" value='<%= yelp_id %>' />
+  <input type="text" name="name" value='<%= name %>' />
+  <input type="text" name="display_phone" value='<%= display_phone %>' />
+  <input type="text" name="address" value='<%= address %>' />
+  <input type="text" name="zipcode" value='<%= zipcode %>' />
+  <input type="text" name="cuisine" value='<%= cuisine %>' />
+  <input type="submit" />
+</form>

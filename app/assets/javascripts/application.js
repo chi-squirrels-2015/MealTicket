@@ -12,5 +12,28 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require bootstrap-sprockets
+//= require underscore
+//= require backbone
+//= require_tree ./templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree .
+
+$(document).ready(function() {
+  var yelpSearchView = new YelpSearchView();
+  yelpSearchView.render();
+  $("#search").append(yelpSearchView.el);
+
+  $("body").on("click", "a.result", function(e) {
+    $("#search").hide();
+    e.preventDefault();
+
+    var newRestaurantView = new NewRestaurantView({
+      model: yelpSearchView.collection.models[$(this).data("result-index")]
+    });
+    newRestaurantView.render();
+    $("body").append(newRestaurantView.el);
+  });
+});

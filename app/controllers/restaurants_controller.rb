@@ -1,6 +1,15 @@
 class RestaurantsController < ApplicationController
-  def show
-    @restaurant = Restaurant.find(1)
+  def index
+    @restaurants = Restaurant.all
+    render json: @restaurants
+  end
+
+  def search
+  end
+
+  def search_yelp
+    parameters = { sort: "0", term: params["restaurant"], limit: 3 }
+    render json: Yelp.client.search(params["zipcode"], parameters).businesses
   end
 
   def new
@@ -8,18 +17,13 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
-
-    if @restaurant.save
-      redirect_to @restaurant
-    else
-      render :new
-    end
+    @restaurant = Restaurant.create(restaurant_params)
+    redirect_to restaurants_path
   end
 
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :cuisine)
+    params.permit(:yelp_id, :name, :display_phone, :address, :zipcode, :cuisine)
   end
 end
