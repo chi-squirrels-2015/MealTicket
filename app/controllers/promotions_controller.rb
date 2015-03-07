@@ -9,11 +9,15 @@ class PromotionsController < ApplicationController
   end
 
   def create
-    @promotion = Promotion.new(promotion_params)
+    promo = promotion_params.to_h
+    promo['max_discount'] = promotion_params['max_discount'].to_f / 100
     @restaurant = Restaurant.find(params[:restaurant_id])
+    @promotion = @restaurant.promotions.build(promo)
+    
     if @promotion.save
-      redirect_to @promotion
+      redirect_to restaurant_path(@restaurant)
     else
+      puts @promotion.errors.full_messages
       render :new
     end
   end
@@ -26,6 +30,7 @@ class PromotionsController < ApplicationController
 
 
   def promotion_params
-    params.require(:deal).permit(:name, :restaurant_id, :min_group_size, :max_group_size, :preferred_group_size, :max_discount, :min_spend, :loss_tolerance)
+    puts params
+    params.require(:promotion).permit(:name, :restaurant_id, :min_group_size, :max_group_size, :preferred_group_size, :max_discount, :min_spend, :loss_tolerance)
   end
 end

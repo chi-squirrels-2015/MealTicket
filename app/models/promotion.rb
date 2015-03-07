@@ -2,7 +2,7 @@ class Promotion < ActiveRecord::Base
   has_many :tickets
   belongs_to :restaurant
 
-  # after_create :generate_tickets
+  after_create :generate_tickets
 
   validates :name, presence: true
   validates :min_group_size, presence: true

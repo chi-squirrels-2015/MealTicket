@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Restaurant.create!(name: "Bobs Burgers", cuisine: "Greasy Spoon")
-Restaurant.create!(name: "Krusty Krab", cuisine: "Burgers")
-Restaurant.create!(name: "Jack Rabbit Slim's", cuisine: "'Murican")
+Restaurant.create!(name: "Bobs Burgers", cuisine: "Greasy Spoon", display_phone: "847-769-2416", address: "1526 W Cullom", zipcode: "60613", yelp_id: "bobs-burgers-fake-place")
+Restaurant.create!(name: "Krusty Krab", cuisine: "Burgers", display_phone: "213-447-6726", address: "68 Sharon Street", zipcode: "11211", yelp_id: "krusty-krab-fake-place")
+Restaurant.create!(name: "Jack Rabbit Slim's", cuisine: "'Murican", display_phone: "213-380-6390", address: "748 S. Kingsley", zipcode: "90019", yelp_id: "jack-rabbit-slims-fake-place")
 
 restaurants = Restaurant.all
 5.times do
