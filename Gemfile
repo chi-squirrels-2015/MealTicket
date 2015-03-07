@@ -31,6 +31,8 @@ gem 'rails_12factor', group: :production
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'yelp', require: 'yelp'
 
+# Stripe
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
