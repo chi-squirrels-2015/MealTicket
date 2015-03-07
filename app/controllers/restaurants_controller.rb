@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
+    render json: @restaurants
   end
 
   def search
@@ -16,12 +17,12 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = Restaurant.create(restaurant_params)
   end
 
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:yelp_id, :name, :display_phone, :address, :zipcode, :cuisine)
+    params.permit(:yelp_id, :name, :display_phone, :address, :zipcode, :cuisine)
   end
 end
