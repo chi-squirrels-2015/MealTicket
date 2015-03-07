@@ -26,9 +26,9 @@ $(document).ready(function() {
   yelpSearchView.render();
   $("#search").append(yelpSearchView.el);
 
-  $("body").on("click", "a.result", function(e) {
-    $("#search").hide();
+  $("#search").on("click", "a.result", function(e) {
     e.preventDefault();
+    $("#search-results").hide();
 
     var newRestaurantView = new NewRestaurantView({
       model: yelpSearchView.collection.models[$(this).data("result-index")]

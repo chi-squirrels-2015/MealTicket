@@ -1,5 +1,15 @@
-<form id="yelp" method="get" action="/search_yelp">
-  <input type="text" name="zipcode">
-  <input type="text" name="restaurant">
-  <input type="submit">
+<form id="yelp-search" method="get" action="/search_yelp">
+  <div class="form-group row">
+    <label for="business-name" class="col-md-2 control-label">Name of your business:</label>
+    <div class="col-md-6">
+      <input type="text" id="business-name" name="business-name" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="location" class="col-md-2 control-label">Your city or zip code:</label>
+    <div class="col-md-6">
+      <input type="text" id="location" name="location" />
+    </div>
+  </div>
+  <button class="btn btn-primary">Find Your Business</button>
 </form>
