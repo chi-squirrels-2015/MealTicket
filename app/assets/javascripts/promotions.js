@@ -5,10 +5,12 @@ $(function(){
   	max: 20,
   	values: [2,10],
   	slide: function(event, ui) {
-  		$("#range-amount").val( ui.values[0] + " - " + ui.values[1]);
+      console.log(ui.values[0]);
+      console.log(ui.values[1]);
+  		$("#range_amount").val( ui.values[0] + " - " + ui.values[1] );
   	}
   });
-  $("#range-amount").val( $("#group_size_slider").slider( "values", 0) + " - " + $("#group_size_slider").slider("values", 1) );
+  $("#range_amount").val( $("#group_size_slider").slider( "values", 0) + " - " + $("#group_size_slider").slider("values", 1) );
 });
 
 
