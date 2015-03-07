@@ -65,3 +65,4 @@ $(function(){
   });
   $("#max_disc_amount").val( $( "#max_disc_slider").slider("value") );
 });
+
