@@ -2,25 +2,35 @@
   <h1><%= @restaurant.name %></h1>
   <h3><%= @restaurant.cuisine %></h3>
   <% @restaurant.promotions.each do |promotion| %>
-    <div class="btn btn-lg btn-primary btn-block">
-      <%= promotion.name %>
-    </div>
-    <%= render :partial =>  "promotions/ticket", locals: {promotion: promotion} %>
+    <div class="col-md-4">
+      <div class="btn btn-lg btn-primary btn-block">
+        <%= promotion.name %>
+      </div>
+      <%= render :partial =>  "promotions/ticket", locals: {promotion: promotion} %>
 
-    <table class="table">
-      <caption>Promotion Details</caption>
-      <thead>
-        <th>Min Group</th>
-        <th>Max Group</th>
-        <th>Preferred Group</th>
-        <th>Loss Tolerance</th>
-      </thead>
-      <tbody>
-        <td><%= promotion.min_group_size %></td>
-        <td><%= promotion.max_group_size %></td>
-        <td><%= promotion.preferred_group_size %></td>
-        <td><%= promotion.loss_tolerance %></td>
-      </tbody>
-    </table>
+      <div class="table-responsive">
+        <table class="table">
+          <caption>Promotion Details</caption>
+          <thead>
+            <th>Min Group</th>
+            <th>Max Group</th>
+            <th>Preferred Group</th>
+            <th>Loss Tolerance</th>
+          </thead>
+          <tbody>
+            <td><%= promotion.min_group_size %></td>
+            <td><%= promotion.max_group_size %></td>
+            <td><%= promotion.preferred_group_size %></td>
+            <td><%= promotion.loss_tolerance %></td>
+          </tbody>
+        </table>
+      </div>
+    </div>
   <% end %>
+    <div class="special-container col-md-4">
+      <div class="btn btn-lg btn-primary btn-block">
+        <%= link_to "New Promotion", new_restaurant_promotion_path(:restaurant_id => @restaurant.id) %>
+      </div>
+    </div>
+
 </div>
