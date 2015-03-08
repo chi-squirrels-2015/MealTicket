@@ -23,16 +23,21 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# For rendering embedded javascript templates
 gem 'ejs'
 
-gem 'rails_12factor', group: :production
+#geocoding for restaurant locations
+gem 'geocoder'
+
+# Stripe for payment processing
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+# For ratings
+gem 'yelp', require: 'yelp'
 
 # Bootstrap Sass
 gem 'bootstrap-sass', '~> 3.3.3'
-gem 'yelp', require: 'yelp'
 
-# Stripe
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -42,6 +47,9 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# For asset pipeline in heroku
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
