@@ -9,5 +9,8 @@ class Purchase < ActiveRecord::Base
   end
 
   def check_current_tickets
+    loss = ticket.loss_per_ticket
+    self.ticket.promotion.update_available_budget(loss)
+    self.ticket.promotion.update_tickets
   end
 end
