@@ -7,6 +7,7 @@ class CreateTickets < ActiveRecord::Migration
       t.integer :group_size
       t.boolean :active
       t.decimal :ticket_price
+      t.decimal :loss_per_ticket
       t.timestamps
     end
   end

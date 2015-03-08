@@ -23,6 +23,7 @@ class Promotion < ActiveRecord::Base
       ticket_params[:min_total_spend] = min_spend * group_size
       ticket_params[:discount]        = calculate_discount(group_size, index)
       ticket_params[:active]          = true
+      ticket_params[:loss_per_ticket] = ticket_params[:min_total_spend] * ticket_params[:discount]
       ticket_params[:ticket_price]    = ticket_params[:min_total_spend] - (ticket_params[:min_total_spend] * ticket_params[:discount])
 
       self.tickets.create(ticket_params)
@@ -41,6 +42,7 @@ class Promotion < ActiveRecord::Base
     end
     tickets
   end
+
 
   private
 
