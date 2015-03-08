@@ -24,7 +24,7 @@ class PromotionsController < ApplicationController
 
     client.messages.create({
       from: "+13123131171",
-      to:   "+14085940365",
+      to:   @promotion.name,
       body: "Hey, you just created a new promotion: #{@promotion.name}!"
       })
 
