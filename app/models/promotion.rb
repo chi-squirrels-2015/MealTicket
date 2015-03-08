@@ -45,7 +45,7 @@ class Promotion < ActiveRecord::Base
 
   def calculate_discount(group_size, position)
     discount = discount_variance / (max_group_size - min_group_size) * position + self.class.minimum_discount
-    if preferred_group_size == group_size
+    if preferred_group_size == group_size && discount < max_discount
       discount += (max_discount / 10)
     end
     discount
