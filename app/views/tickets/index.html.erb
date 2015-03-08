@@ -1,16 +1,16 @@
-<table>
-  <thead>
-    <th>Restaurant Name</th>
-    <th>Actual Cost</th>
-    <th>Discount Amount</th>
-    <th>Ticket Price</th>
-  </thead>
-  <% @tickets.each do |ticket| %>
-  <tr>
-    <td><%= ticket.promotion.restaurant.name %></td>
-    <td><%= ticket.min_total_spend %></td>
-    <td><%= ticket.discount.round(2) %></td>
-    <td><%= ticket.ticket_price.round(2) %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="row">
+  <div class="ticket-row-height col-md-4">Restaurant Name</div>
+  <div class="ticket-row-height col-md-2">Minimum Spend</div>
+  <div class="ticket-row-height col-md-2">Ticket Price</div>
+  <div class="ticket-row-height col-md-2">Discount</div>
+  <div class="ticket-row-height col-md-2">Buy</div>
+</div>
+<% @tickets.each do |ticket| %>
+<div class="row">
+  <div class="ticket-row-height col-md-4"><%= ticket.promotion.restaurant.name %></div>
+  <div class="ticket-row-height col-md-2"><%= number_to_currency(ticket.min_total_spend, locale: :en) %></div>
+  <div class="ticket-row-height col-md-2"><%= number_to_currency(ticket.ticket_price, locale: :en) %></div>
+  <div class="ticket-row-height col-md-2"><span class="label label-primary"><%= number_to_percentage(ticket.discount * 100, precision: 2)%></span></div>
+  <div class="ticket-row-height col-md-2"><span class="btn label label-primary">Reserve</span></div>
+</div>
+<% end %>
