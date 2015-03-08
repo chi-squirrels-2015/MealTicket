@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get "/search" => "restaurants#search"
   get "/search_yelp" => 'restaurants#search_yelp'
 
-  get "/preview_tickets" => "promotions#preview_tickets"
+  # get "/preview_tickets" => "promotions#preview_tickets"
 
   # post "/restaurants" => 'restaurants#create'
   # get "/restaurants" => 'restaurants#index'

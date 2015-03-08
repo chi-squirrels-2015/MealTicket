@@ -43,6 +43,19 @@ class Promotion < ActiveRecord::Base
     tickets
   end
 
+  def update_available_budget(loss)
+    self.available_budget -= loss
+    self.save
+  end
+
+  def update_tickets
+    self.tickets.each do |ticket|
+      if available_budget < ticket.loss_per_ticket
+        ticket.update(active: false)
+      end
+    end
+  end
+
 
   private
 
