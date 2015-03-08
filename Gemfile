@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # For rendering embedded javascript templates
 gem 'ejs'
 
+
 #geocoding for restaurant locations
 gem 'geocoder'
 
@@ -37,6 +38,11 @@ gem 'twilio-ruby'
 
 # For ratings
 gem 'yelp', require: 'yelp'
+
+gem 'twilio-ruby'
+
+
+
 
 # Bootstrap Sass
 gem 'bootstrap-sass', '~> 3.3.3'
