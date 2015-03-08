@@ -13,7 +13,7 @@ class Promotion < ActiveRecord::Base
   validates :max_discount, presence: true
 
   def self.minimum_discount
-    0.10
+    10
   end
 
   def generate_tickets
@@ -28,11 +28,24 @@ class Promotion < ActiveRecord::Base
     end
   end
 
+  def preview_tickets
+    tickets = []
+    (min_group_size..max_group_size).each_with_index do |group_size, index|
+      ticket_params = {}
+      ticket_params[:group_size]      = group_size
+      ticket_params[:min_total_spend] = format("%.2f" % (min_spend * group_size))
+      ticket_params[:discount]        = format("%.2f" % calculate_discount(group_size, index))
+
+      tickets << Ticket.new(ticket_params)
+    end
+    tickets
+  end
+
   private
 
-  def calculate_discount(group_size)
-    discount = discount_variance / max_group_size * group_size + self.class.minimum_discount
-    if preferred_group_size == group_size
+  def calculate_discount(group_size, position)
+    discount = discount_variance / (max_group_size - min_group_size) * position + self.class.minimum_discount
+    if preferred_group_size == group_size && discount < max_discount
       discount += (max_discount / 10)
     end
     discount

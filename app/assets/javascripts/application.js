@@ -44,4 +44,7 @@ $(document).ready(function() {
     newRestaurantView.render();
     $("#search").append(newRestaurantView.el);
   });
+
+
+  $("")
 });

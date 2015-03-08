@@ -27,7 +27,10 @@ class PromotionsController < ApplicationController
     @promotion.restaurant = Restaurant.find(params[:restaurant_id])
   end
 
-
+  def preview_tickets
+    @promotion = Promotion.new(promotion_params)
+    render json: @promotion.preview_tickets
+  end
 
   def promotion_params
     puts params
