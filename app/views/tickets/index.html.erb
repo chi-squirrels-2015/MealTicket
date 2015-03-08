@@ -5,17 +5,29 @@
   <div class="ticket-row-height col-md-2">Discount</div>
   <div class="ticket-row-height col-md-2">Buy</div>
 </div>
+
 <% @tickets.each do |ticket| %>
-<div class="row">
-  <%= form_tag charges_path, method: :post, id: "new-purchase" %>
-    <div class="ticket-row-height col-md-4"><%= ticket.promotion.restaurant.name %>
-      <input type="hidden" name="purchase[]" value=""></div>
-    <div class="ticket-row-height col-md-2"><%= number_to_currency(ticket.min_total_spend, locale: :en) %>
-      <input type="hidden" name="purchase[]" value=""></div>
-    <div class="ticket-row-height col-md-2"><%= number_to_currency(ticket.ticket_price, locale: :en) %>
-      <input type="hidden" name="purchase[]" value=""></div>
-    <div class="ticket-row-height col-md-2"><span class="label label-primary"><%= number_to_percentage(ticket.discount * 100, precision: 2)%></span><input type="hidden" name="purchase[]" value=""></div>
-    <input type="submit">
-  <!--   <div class="ticket-row-height col-md-2"><span class="btn label label-primary">Reserve</span></div> -->
-</div>
+  <div class="row">
+    <div class="ticket-row-height col-md-4"><%= ticket.promotion.restaurant.name %></div>
+    <div class="ticket-row-height col-md-2"><%= number_to_currency(ticket.min_total_spend, locale: :en) %></div>
+    <div class="ticket-row-height col-md-2"><%= number_to_currency(ticket.ticket_price, locale: :en) %></div>
+    <div class="ticket-row-height col-md-2"><span class="label label-primary"><%= number_to_percentage(ticket.discount * 100, precision: 2)%></span></div>
+    <div class="ticket-row-height col-md-2">
+      <%= form_tag purchases_path do %>
+      <input type="hidden" name="purchase[promotion]" value="<%= ticket.promotion %>">
+      <input type="hidden" name="purchase[ticket_price]" value="<%= ticket.ticket_price %>">
+      <article>
+        <label class="amount">
+          <span>Amount: <%= number_to_currency(ticket.ticket_price, locale: :en) %></span>
+        </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-description="Your discounted meal."
+      data-amount="<%= ticket.ticket_price * 100 %>"></script>
+      <% end %>
+    </div>
+  </div>
+
 <% end %>
