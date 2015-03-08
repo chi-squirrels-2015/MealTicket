@@ -10,13 +10,23 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
 
 </head>
+<style>
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
 
 <body>
   <%= render "navigation/topnav" %>
   <div class="container">
     <%= yield %>
+
   </div>
+  
+
 </body>
 </html>

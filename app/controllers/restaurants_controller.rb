@@ -25,6 +25,14 @@ class RestaurantsController < ApplicationController
     redirect_to @restaurant
   end
 
+  def closest
+    render json: Restaurant.near([params[:lat], params[:long]], 10)
+  end
+
+  def map
+    
+  end
+
   private
 
   def restaurant_params

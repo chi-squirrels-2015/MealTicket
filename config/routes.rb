@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   get "/preview_tickets" => "promotions#preview_tickets"
 
+  get "/closest_restaurants" => "restaurants#closest"
+  get "/map" => "restaurants#map"
+
   # post "/restaurants" => 'restaurants#create'
   # get "/restaurants" => 'restaurants#index'
 

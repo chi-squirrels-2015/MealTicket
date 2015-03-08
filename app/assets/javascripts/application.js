@@ -45,6 +45,13 @@ $(document).ready(function() {
     $("#search").append(newRestaurantView.el);
   });
 
+ 
 
-  $("")
+  L.mapbox.accessToken = 'pk.eyJ1IjoiYWlyd2luMzMiLCJhIjoiLTJOUnFoOCJ9.i3f8IJ93mGkh9BCiULG53w';
+
+  var coords = navigator.geolocation.getCurrentPosition(function(pos){ return pos });
+
+  var map = L.mapbox.map('map', 'airwin33.ldh7b6gb').locate({setView: true, maxZoom: 16});
 });
+
+
