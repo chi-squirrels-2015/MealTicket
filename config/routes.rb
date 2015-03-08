@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   end
 
+  # Stripe
+  resources :charges
+
   # get 'dashboard', to: 'restaurants#show', as: :dashboard
 
 end
