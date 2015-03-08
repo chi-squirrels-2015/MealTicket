@@ -28,7 +28,9 @@ class PromotionsController < ApplicationController
   end
 
   def preview_tickets
-    @promotion = Promotion.new(promotion_params)
+    promo = promotion_params.to_h
+    promo['max_discount'] = promotion_params['max_discount'].to_f / 100
+    @promotion = Promotion.new(promo)
     render json: @promotion.preview_tickets
   end
 
