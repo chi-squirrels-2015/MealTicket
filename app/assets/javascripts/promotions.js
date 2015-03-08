@@ -12,18 +12,16 @@ $(function(){
       var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
       ticketsPreviewCollection.fetch().done(function(response) {
         var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
-        previewTicketsView.render()
-        $("#promotion-preview").find("tbody").html(previewTicketsView.el);
+        previewTicketsView.render();
+        previewTicketsView.addAll();
+        $("#promotion-preview").html(previewTicketsView.el);
       });
     }
   });
   
   $("#min_group_size").val($("#group_size_slider").slider("values", 0));
   $("#max_group_size").val($("#group_size_slider").slider("values", 1));
-});
 
-
-$(function(){
   $('#pref_group_size_slider').slider({
   	range: "max",
   	min: 1,
@@ -31,13 +29,19 @@ $(function(){
   	value: 4,
   	slide: function( event, ui ){
   		$("#preferred_group_size").val(ui.value);
-  	}
+  	},
+    change: function(event, ui) {
+      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
+      ticketsPreviewCollection.fetch().done(function(response) {
+        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
+        previewTicketsView.render();
+        previewTicketsView.addAll();
+        $("#promotion-preview").html(previewTicketsView.el);
+      });
+    }
   });
   $("#preferred_group_size").val( $( "#pref_group_size_slider").slider( "value" ) );
 
-});
-
-$(function(){
   $('#loss_slider').slider({
   	range: "max",
   	min: 100,
@@ -49,31 +53,52 @@ $(function(){
   });
   $("#loss_tolerance").val( $( "#loss_slider").slider( "value" ) );
 
-});
-
-$(function(){
   $('#min_spend_slider').slider({
   	range: "max",
   	min: 10,
-  	max: 25,
+  	max: 50,
   	value: 15,
   	slide: function( event, ui ){
   		$("#min_spend").val(ui.value);
-  	}
+  	},
+    change: function(event, ui) {
+      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
+      ticketsPreviewCollection.fetch().done(function(response) {
+        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
+        previewTicketsView.render();
+        previewTicketsView.addAll();
+        $("#promotion-preview").html(previewTicketsView.el);
+      });
+    }
   });
   $("#min_spend").val( $( "#min_spend_slider").slider( "value" ) );
-});
 
-$(function(){
   $('#max_disc_slider').slider({
   	range: "max",
   	min: 10,
-  	max: 100,
+  	max: 50,
   	value: 20,
   	slide: function( event, ui ){
   		$("#max_discount").val(ui.value);
-  	}
+  	},
+    change: function(event, ui) {
+      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
+      ticketsPreviewCollection.fetch().done(function(response) {
+        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
+        previewTicketsView.render();
+        previewTicketsView.addAll();
+        $("#promotion-preview").html(previewTicketsView.el);
+      });
+    }
   });
 
   $("#max_discount").val( $( "#max_disc_slider").slider("value") );
+
+  var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
+  ticketsPreviewCollection.fetch().done(function(response) {
+    var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
+    previewTicketsView.render();
+    previewTicketsView.addAll();
+    $("#promotion-preview").html(previewTicketsView.el);
+  });
 });
