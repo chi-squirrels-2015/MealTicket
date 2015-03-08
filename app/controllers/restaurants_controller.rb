@@ -30,6 +30,7 @@ class RestaurantsController < ApplicationController
   end
 
   def map
+
   end
 
   private
