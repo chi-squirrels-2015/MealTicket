@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <% @restaurant.each do |r| %>
+            <div class="col-md-4 col-md-offset-1">
+                <h2 class="restaurant-name"><%= r.name %></h2>
+                    <ul class="list-group">
+                    <% r.promotions.each do |promo| %>
+                        <li class="list-group-item promo-row"><div class="promo-name"><%= promo.name %></div>
+                        <div class="promo-percent"><span class="label label-primary"><%= number_to_percentage(promo.max_discount * 100, precision: 0) %></span></div></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+    </div>
+</div>

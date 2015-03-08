@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   # Stripe
   resources :charges
 
+  resources :patrons, only: [:index, :show] do
+      resources :promotions, only: [:index, :show]
+  end
+
   # get 'dashboard', to: 'restaurants#show', as: :dashboard
 
 end
