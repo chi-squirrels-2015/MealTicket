@@ -49,9 +49,21 @@ $(document).ready(function() {
 
   L.mapbox.accessToken = 'pk.eyJ1IjoiYWlyd2luMzMiLCJhIjoiLTJOUnFoOCJ9.i3f8IJ93mGkh9BCiULG53w';
 
-  var coords = navigator.geolocation.getCurrentPosition(function(pos){ return pos });
+  var map = L.mapbox.map('map', 'airwin33.ldh7b6gb').locate({setView: true, maxZoom: 15});
 
-  var map = L.mapbox.map('map', 'airwin33.ldh7b6gb').locate({setView: true, maxZoom: 16});
+  // plot the current location with a marker
+  map.on('locationfound', function(event){
+    console.log(event);
+    L.marker(event.latlng).addTo(map);
+  });
+
+  // load restaurants within radius
+  var currentLoc = map.locate();
+  debugger;
+  var request = $.get("/closest_restaurants", {lat: currentLoc.lat, lng: curentLoc.lng});
+  request.done(function(response) {
+    console.log(response);
+  });
 });
 
 
