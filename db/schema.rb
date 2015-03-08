@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150306161030) do
     t.decimal  "min_total_spend"
     t.integer  "group_size"
     t.boolean  "active"
+    t.decimal  "ticket_price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

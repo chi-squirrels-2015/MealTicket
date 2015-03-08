@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <th>Restaurant Name</th>
+    <th>Actual Cost</th>
+    <th>Discount Amount</th>
+    <th>Ticket Price</th>
+  </thead>
+  <% @tickets.each do |ticket| %>
+  <tr>
+    <td><%= ticket.promotion.restaurant.name %></td>
+    <td><%= ticket.min_total_spend %></td>
+    <td><%= ticket.discount.round(2) %></td>
+    <td><%= ticket.ticket_price.round(2) %></td>
+  </tr>
+  <% end %>
+</table>

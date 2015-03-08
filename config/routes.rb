@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   end
 
+  resources :tickets 
+
   # Stripe
   resources :charges
 
