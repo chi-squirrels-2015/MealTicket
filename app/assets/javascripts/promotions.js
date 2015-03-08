@@ -7,7 +7,15 @@ $(function(){
   	slide: function(event, ui) {
   		$("#min_group_size").val( ui.values[0]);
       $("#max_group_size").val( ui.values[1]);
-  	}
+  	},
+    change: function(event, ui) {
+      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
+      ticketsPreviewCollection.fetch().done(function(response) {
+        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
+        previewTicketsView.render()
+        $("#promotion-preview").find("tbody").html(previewTicketsView.el);
+      });
+    }
   });
   
   $("#min_group_size").val($("#group_size_slider").slider("values", 0));

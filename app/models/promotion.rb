@@ -28,6 +28,20 @@ class Promotion < ActiveRecord::Base
     end
   end
 
+  def preview_tickets
+    tickets = []
+    (min_group_size..max_group_size).each do |group_size|
+      ticket_params = {}
+      ticket_params[:group_size]      = group_size
+      ticket_params[:min_total_spend] = min_spend * group_size
+      ticket_params[:discount]        = calculate_discount(group_size)
+      ticket_params[:active]          = true
+
+      tickets << Ticket.new(ticket_params)
+    end
+    tickets
+  end
+
   private
 
   def calculate_discount(group_size)
