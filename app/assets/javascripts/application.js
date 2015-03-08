@@ -29,7 +29,7 @@ $(document).ready(function() {
   $("#search").on("click", "a.result", function(e) {
     e.preventDefault();
     $("#search-results").hide();
-    
+
     var resultIndex = $(this).data("result-index");
     if(resultIndex !== undefined) {
       var newRestaurantView = new NewRestaurantView({
@@ -45,7 +45,7 @@ $(document).ready(function() {
     $("#search").append(newRestaurantView.el);
   });
 
- 
+
 
   L.mapbox.accessToken = 'pk.eyJ1IjoiYWlyd2luMzMiLCJhIjoiLTJOUnFoOCJ9.i3f8IJ93mGkh9BCiULG53w';
 
