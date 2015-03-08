@@ -19,10 +19,10 @@ Rails.application.routes.draw do
 
   end
 
-  resources :tickets 
+  resources :tickets, only: [:index, :show]
 
   # Stripe
-  resources :charges
+  resources :purchases, only: [:new, :create]
 
   resources :patrons, only: [:index, :show] do
       resources :promotions, only: [:index, :show]
