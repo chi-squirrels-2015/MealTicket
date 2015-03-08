@@ -10,7 +10,7 @@ class CreatePromotions < ActiveRecord::Migration
       t.integer :preferred_group_size
 
       t.decimal :total_budget
-      t.decimal :available_budget
+      t.decimal :available_budget, default: :total_budget
 
       t.decimal :min_spend
       t.decimal :max_discount
