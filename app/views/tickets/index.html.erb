@@ -14,14 +14,9 @@
     <div class="ticket-row-height col-md-2"><%= number_to_percentage(ticket.discount * 100, precision: 2)%></div>
     <div class="ticket-row-height col-md-2"><%= number_to_currency(ticket.ticket_price, locale: :en) %></div>
     <div class="ticket-row-height col-md-2">
-      <%= form_tag purchases_path do %>
-      <input type="hidden" name="purchase[promotion]" value="<%= ticket.promotion %>">
-      <input type="hidden" name="purchase[ticket_price]" value="<%= ticket.ticket_price %>">
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-      data-description="Your discounted meal."
-      data-amount="<%= ticket.ticket_price.to_i * 100 %>"></script>
-      <% end %>
+      <%= form_tag new_purchase_path, method: :get %>
+      <input type="hidden" name="ticket_id" value="<%= ticket.id %>">
+      <span class="label-primary"><input type="submit" value="Purchase"></span>
     </div>
   </div>
   <% break if ticket.id > 10 %>

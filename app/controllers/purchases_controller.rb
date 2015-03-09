@@ -1,13 +1,20 @@
 class PurchasesController < ApplicationController
   def new
-    # puts params
-    # @ticket = nil
+    @ticket = Ticket.find(params[:ticket_id])
+    @promotion = @ticket.promotion
+    @purchase = Purchase.new
+    puts params
   end
 
   def create
-    @promotion = params[:purchase][:promotion]
-    @amount = params[:purchase][:ticket_price].to_i * 100
-    puts @amount
+    @ticket = Ticket.find(params[:purchase][:ticket_id])
+    @promotion = @ticket.promotion
+    @purchaser_name = params[:purchase][:purchaser_name]
+    @phone_number = params[:purchase][:phone_number]
+    @amount = (@ticket.ticket_price).to_i * 100
+
+    # @promotion = params[:purchase][:promotion]
+    # @amount = params[:purchase][:ticket_price].to_i * 100
 
     customer = Stripe::Customer.create(
       :email => 'example@stripe.com',
@@ -21,8 +28,8 @@ class PurchasesController < ApplicationController
       :currency    => 'usd'
     )
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to purchases_path
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to purchases_path
   end
 end
