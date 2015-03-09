@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get "/search" => "restaurants#search"
   get "/search_yelp" => 'restaurants#search_yelp'
 
-  get "/preview_tickets" => "promotions#preview_tickets"
+  # get "/preview_tickets" => "promotions#preview_tickets"
 
   # post "/restaurants" => 'restaurants#create'
   # get "/restaurants" => 'restaurants#index'
@@ -19,8 +19,10 @@ Rails.application.routes.draw do
 
   end
 
+  resources :tickets, only: [:index, :show]
+
   # Stripe
-  resources :charges
+  resources :purchases, only: [:new, :create]
 
   resources :patrons, only: [:index, :show] do
       resources :promotions, only: [:index, :show]
