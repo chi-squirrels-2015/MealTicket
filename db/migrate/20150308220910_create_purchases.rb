@@ -5,7 +5,7 @@ class CreatePurchases < ActiveRecord::Migration
       t.string     :purchaser_name
       t.string     :phone_number
       t.string     :confirmation_id
-      t.paid       :false
+      t.boolean    :paid
 
       t.timestamps null: false
     end
