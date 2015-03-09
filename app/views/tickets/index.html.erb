@@ -14,9 +14,10 @@
     <div class="ticket-row-height col-md-2"><%= number_to_percentage(ticket.discount * 100, precision: 2)%></div>
     <div class="ticket-row-height col-md-2"><%= number_to_currency(ticket.ticket_price, locale: :en) %></div>
     <div class="ticket-row-height col-md-2">
-      <%= form_tag new_purchase_path, method: :get %>
-      <input type="hidden" name="ticket_id" value="<%= ticket.id %>">
-      <span class="label-primary"><input type="submit" value="Purchase"></span>
+      <%= form_tag new_purchase_path, method: :get do %>
+        <input type="hidden" name="purchase[ticket_id]" value="<%= ticket.id %>">
+        <input type="submit" value="Purchase">
+      <% end %>
     </div>
   </div>
   <% break if ticket.id > 10 %>

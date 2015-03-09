@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150309162720) do
     t.integer  "ticket_id"
     t.string   "purchaser_name"
     t.string   "phone_number"
+    t.string   "email"
     t.string   "confirmation_id"
     t.boolean  "paid"
     t.datetime "created_at",      null: false

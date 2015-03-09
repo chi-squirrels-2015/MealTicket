@@ -4,6 +4,7 @@ class CreatePurchases < ActiveRecord::Migration
       t.belongs_to :ticket
       t.string     :purchaser_name
       t.string     :phone_number
+      t.string     :email
       t.string     :confirmation_id
       t.boolean    :paid
 
