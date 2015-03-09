@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308220910) do
+ActiveRecord::Schema.define(version: 20150309162720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,11 +22,13 @@ ActiveRecord::Schema.define(version: 20150308220910) do
     t.integer  "min_group_size"
     t.integer  "max_group_size"
     t.integer  "preferred_group_size"
-    t.integer  "loss_tolerance"
+    t.decimal  "loss_tolerance"
+    t.decimal  "available_budget"
     t.decimal  "min_spend"
     t.decimal  "max_discount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",               default: true
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -53,6 +55,8 @@ ActiveRecord::Schema.define(version: 20150308220910) do
     t.decimal  "min_total_spend"
     t.integer  "group_size"
     t.boolean  "active"
+    t.decimal  "ticket_price"
+    t.decimal  "loss_per_ticket"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

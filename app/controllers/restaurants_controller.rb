@@ -25,6 +25,29 @@ class RestaurantsController < ApplicationController
     redirect_to @restaurant
   end
 
+  def closest
+    closest = Restaurant.near([params[:lat], params[:lng]], 2).joins(:promotions).where(:promotions => {:active => true})
+    @geojson = []
+    closest.each do |restaurant|
+      @geojson << {
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: [restaurant.longitude, restaurant.latitude]
+        },
+        properties: {
+          name: restaurant.name,
+          address: restaurant.address
+        }
+      }
+    end
+    render json: @geojson
+  end
+
+  def map
+
+  end
+
   private
 
   def restaurant_params

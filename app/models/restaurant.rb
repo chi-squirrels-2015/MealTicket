@@ -7,4 +7,14 @@ class Restaurant < ActiveRecord::Base
   validates :address, presence: true
   validates :zipcode, presence: true
   validates :cuisine, presence: true
+
+  geocoded_by :geocoder_address
+  after_validation :geocode
+
+  private
+
+  def geocoder_address
+    "#{address} #{zipcode}"
+  end
+
 end
