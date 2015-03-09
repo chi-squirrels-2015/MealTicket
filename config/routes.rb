@@ -32,8 +32,4 @@ Rails.application.routes.draw do
       resources :promotions, only: [:index, :show]
   end
 
-  get "/purchases" => "purchases#create", as: "receipt_path"
-
-  # get 'dashboard', to: 'restaurants#show', as: :dashboard
-
 end

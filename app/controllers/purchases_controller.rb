@@ -1,3 +1,5 @@
+require 'pry'
+
 class PurchasesController < ApplicationController
   def new
     @ticket = Ticket.find(params[:purchase][:ticket_id])
@@ -16,20 +18,38 @@ class PurchasesController < ApplicationController
         @purchase.ticket.update(active: false)
         @purchase.errors.full_message
       else
-        customer = Stripe::Customer.create(
-          :email => params[:purchase][:email],
-          :card  => params[:stripeToken]
-        )
+        customer = Customer.new({
+          email: params[:purchase][:email],
+          card: params[:stripeToken],
+        })
+        customer.create_in_stripe!
+        customer.charge!(@amount, description: @promotion)
+        @purchase.confirm!
+        customer.send_confirmation_message!(@purchase)
 
-        purchase = Stripe::Charge.create(
-          :customer    => customer.id,
-          :amount      => @amount,
-          :description => @promotion,
-          :currency    => 'usd'
-        )
+        # customer = Stripe::Customer.create(
+        #   :email => params[:purchase][:email],
+        #   :card  => params[:stripeToken]
+        # )
 
-        @purchase.create_confirmation_id
-        @purchase.save
+        # purchase = Stripe::Charge.create(
+        #   :customer    => customer.id,
+        #   :amount      => @amount,
+        #   :description => @promotion,
+        #   :currency    => 'usd'
+        # )
+
+        # @purchase.create_confirmation_id
+        # @purchase.save
+
+        # client = Twilio::REST::Client.new
+        # client.messages.create({
+        #   from: "+13123131171",
+        #   to:   @purchase.phone_number,
+        #   body: "Hey #{@purchase.purchaser_name},\nThanks for choosing MealTicket for #{@purchase.ticket.promotion.restaurant.name} for a group of #{@purchase.ticket.group_size}. Your confirmation number is: #{@purchase.confirmation_id}. Enjoy your meal!"
+        # })
+
+        render "purchases/create"
       end
     else
       @purchase.errors.full_message
@@ -40,14 +60,8 @@ class PurchasesController < ApplicationController
     if stripe_error.message
       flash[:error] = stripe_error.message
       puts stripe_error
-      render :new
-    else
-      @name = @purchase.purchaser_name
-      @phone = @purchase.phone_number
-      redirect_to receipt_path
+      render :new      
     end
-
-    # redirect_to purchases_path
   end
 
 
