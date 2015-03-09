@@ -14,7 +14,6 @@ jQuery(function($) {
 
 function stripeResponseHandler(status, response) {
   var $form = $('#purchase-form');
-  console.log(response);
 
   if (response.error) {
     // Show the errors on the form
