@@ -1,6 +1,9 @@
 class Purchase < ActiveRecord::Base
   belongs_to :ticket
 
+  validates :purchaser_name, presence: true
+  validates :phone_number, presence: true
+
   after_create :check_current_tickets
 
   def create_confirmation_id
