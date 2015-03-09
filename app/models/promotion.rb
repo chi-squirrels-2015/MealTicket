@@ -17,6 +17,11 @@ class Promotion < ActiveRecord::Base
   end
 
   def generate_tickets
+    unless available_budget
+      self.available_budget = loss_tolerance
+      self.save
+    end
+
     (min_group_size..max_group_size).each_with_index do |group_size, index|
       ticket_params = {}
       ticket_params[:group_size]      = group_size
