@@ -17,7 +17,7 @@ class PurchasesController < ApplicationController
         @purchase.errors.full_message
       else
         customer = Stripe::Customer.create(
-          :email => params[:purchase][:email]
+          :email => params[:purchase][:email],
           :card  => params[:stripeToken]
         )
 
@@ -29,8 +29,6 @@ class PurchasesController < ApplicationController
         )
 
         @purchase.create_confirmation_id
-        @purchase.purchaser_name = params[:purchase][:purchaser_name]
-        @purchase.phone_number = params[:purchase][:phone_number]
         @purchase.save
       end
     else
@@ -46,7 +44,7 @@ class PurchasesController < ApplicationController
     else
       @name = @purchase.purchaser_name
       @phone = @purchase.phone_number
-      render "purchases/receipt"
+      redirect_to receipt_path
     end
 
     # redirect_to purchases_path
