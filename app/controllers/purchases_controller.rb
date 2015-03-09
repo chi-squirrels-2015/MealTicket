@@ -18,7 +18,7 @@ class PurchasesController < ApplicationController
     )
 
     purchase = Stripe::Charge.create(
-
+      :customer    => customer.id,
       :amount      => @amount,
       :description => @promotion,
       :currency    => 'usd'
