@@ -22,8 +22,7 @@ ActiveRecord::Schema.define(version: 20150308220910) do
     t.integer  "min_group_size"
     t.integer  "max_group_size"
     t.integer  "preferred_group_size"
-    t.decimal  "loss_tolerance"
-    t.decimal  "available_budget"
+    t.integer  "loss_tolerance"
     t.decimal  "min_spend"
     t.decimal  "max_discount"
     t.datetime "created_at"
@@ -44,6 +43,8 @@ ActiveRecord::Schema.define(version: 20150308220910) do
     t.string   "cuisine"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -52,8 +53,6 @@ ActiveRecord::Schema.define(version: 20150308220910) do
     t.decimal  "min_total_spend"
     t.integer  "group_size"
     t.boolean  "active"
-    t.decimal  "ticket_price"
-    t.decimal  "loss_per_ticket"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
