@@ -73,6 +73,8 @@ GEM
     ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.4.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.1)
@@ -207,6 +209,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   ejs
+  faker
   geocoder
   jbuilder (~> 2.0)
   jquery-rails
