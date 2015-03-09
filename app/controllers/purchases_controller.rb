@@ -5,9 +5,6 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    puts params
-
-    # Amount in cents
     @promotion = params[:purchase][:promotion]
     @amount = params[:purchase][:ticket_price].to_i * 100
     puts @amount
