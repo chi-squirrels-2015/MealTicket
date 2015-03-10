@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get "/search" => "restaurants#search"
   get "/search_yelp" => 'restaurants#search_yelp'
 
-
   get "/preview_tickets" => "promotions#preview_tickets"
 
   get "/closest_restaurants" => "restaurants#closest"
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :tickets, only: [:index, :show]
+  # resources :tickets, only: [:index, :show]
 
   # Stripe
   resources :purchases, only: [:new, :create]
@@ -31,5 +30,7 @@ Rails.application.routes.draw do
   resources :patrons, only: [:index, :show] do
       resources :promotions, only: [:index, :show]
   end
+
+  get "/dashboard" => "restaurants#dashboard", as: "dashboard_path"
 
 end

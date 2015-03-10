@@ -6,8 +6,35 @@ $(document).ready(function(){
 
   map.on('locationfound', function(event){
     var currentLoc = L.marker(event.latlng).addTo(map);
-    var featureLayer = L.mapbox.featureLayer()
+    myLayer = L.mapbox.featureLayer()
       .loadURL('/closest_restaurants?lat=' + currentLoc.getLatLng().lat + '&lng=' + currentLoc.getLatLng().lng)
       .addTo(map);
+
+
+    myLayer.on('layeradd', function(e){
+    var marker = e.layer,
+      feature = marker.feature;
+
+    var content = e.layer.feature.properties
+    var content = '<p>' + content.name + '</p>' + '<p>' + content.address + '</p>' + '<form action="/restaurants/' + content.id + '"><input type="submit" value="View Promotions"></form>'
+
+    // <form action="/">
+    // <input type="submit" value="View Promotions">
+    // </form>
+
+    marker.bindPopup(content);
+    moreshit = content
+
+    });
+
+    // question: will this change the latlng?
+
+    myLayer.on('click', function(e) {
+        map.panTo(e.layer.getLatLng());
+    });
+
   });
+
+
 });
+
