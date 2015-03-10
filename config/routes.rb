@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get "/search" => "restaurants#search"
   get "/search_yelp" => 'restaurants#search_yelp'
 
+
   get "/preview_tickets" => "promotions#preview_tickets"
 
   get "/closest_restaurants" => "restaurants#closest"
@@ -30,7 +31,5 @@ Rails.application.routes.draw do
   resources :patrons, only: [:index, :show] do
       resources :promotions, only: [:index, :show]
   end
-
-  # get 'dashboard', to: 'restaurants#show', as: :dashboard
 
 end

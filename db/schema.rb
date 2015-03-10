@@ -32,8 +32,14 @@ ActiveRecord::Schema.define(version: 20150309162720) do
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "ticket_id"
+    t.string   "purchaser_name"
+    t.string   "phone_number"
+    t.string   "email"
+    t.string   "confirmation_id"
+    t.boolean  "paid"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "restaurants", force: :cascade do |t|

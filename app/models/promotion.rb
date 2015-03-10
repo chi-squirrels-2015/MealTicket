@@ -10,54 +10,64 @@ class Promotion < ActiveRecord::Base
   validates :preferred_group_size, presence: true
   validates :min_spend, presence: true
   validates :loss_tolerance, presence: true
+  validates :available_budget, presence: true
   validates :max_discount, presence: true
+
+  before_validation :set_available_budget, on: :create
 
   def self.minimum_discount
     0.10
   end
 
-  def generate_tickets
-    (min_group_size..max_group_size).each_with_index do |group_size, index|
-      ticket_params = {}
-      ticket_params[:group_size]      = group_size
-      ticket_params[:min_total_spend] = min_spend * group_size
-      ticket_params[:discount]        = calculate_discount(group_size, index)
-      ticket_params[:active]          = true
-      ticket_params[:loss_per_ticket] = ticket_params[:min_total_spend] * ticket_params[:discount]
-      ticket_params[:ticket_price]    = ticket_params[:min_total_spend] - (ticket_params[:min_total_spend] * ticket_params[:discount])
+  def tickets_for_groups(min_group_size, max_group_size)
+    (min_group_size..max_group_size).each_with_index.map do |group_size, index|
+      ticket = ticket_params(group_size, index)
+      if block_given?
+        yield ticket
+      else
+        ticket
+      end
+    end
+  end
 
+  def generate_tickets
+    tickets_for_groups(min_group_size, max_group_size) do |ticket_params|
       self.tickets.create(ticket_params)
     end
   end
 
   def preview_tickets
-    tickets = []
-    (min_group_size..max_group_size).each_with_index do |group_size, index|
-      ticket_params = {}
-      ticket_params[:group_size]      = group_size
-      ticket_params[:min_total_spend] = format("%.2f" % (min_spend * group_size))
-      ticket_params[:discount]        = format("%.2f" % (calculate_discount(group_size, index) * 100))
+    tickets_for_groups(min_group_size, max_group_size)
+  end
 
-      tickets << ticket_params
-    end
-    tickets
+  def ticket_params(group_size, index)
+    min_total_spend = min_spend * group_size
+    discount        = calculate_discount(group_size, index)
+    loss_per_ticket = min_total_spend * discount
+    ticket_price    = min_total_spend - (min_total_spend * discount)
+    {
+      group_size: group_size,
+      min_total_spend: min_total_spend,
+      discount: discount,
+      loss_per_ticket: loss_per_ticket,
+      ticket_price: ticket_price
+    }
   end
 
   def update_available_budget(loss)
-    self.available_budget -= loss
-    self.save
+    self.update(available_budget: self.available_budget - loss)
   end
 
   def update_tickets
-    self.tickets.each do |ticket|
-      if available_budget < ticket.loss_per_ticket
-        ticket.update(active: false)
-      end
-    end
+    bogus_tickets = self.tickets.select {|t| available_budget < t.loss_per_ticket}
+    bogus_tickets.map(&:deactivate!)
   end
 
-
   private
+
+  def set_available_budget
+    self[:available_budget] ||= loss_tolerance
+  end
 
   def calculate_discount(group_size, position)
     discount = discount_variance / (max_group_size - min_group_size) * position + self.class.minimum_discount

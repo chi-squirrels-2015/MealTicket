@@ -32,6 +32,9 @@ gem 'geocoder'
 # Stripe for payment processing
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
+# Twilio for mobile messaging
+gem 'twilio-ruby'
+
 # For ratings
 gem 'yelp', require: 'yelp'
 
@@ -56,6 +59,8 @@ group :development, :test do
   gem 'byebug'
 
   gem 'faker'
+
+  gem 'pry'
 
   gem 'rspec-rails'
 
