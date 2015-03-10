@@ -3,25 +3,33 @@ require 'spec_helper'
 
 describe Purchase do
   before (:all) do
-    promo_params = { name: "PromoTest",
-                   min_group_size: 2,
-                   max_group_size: 8,
-                   preferred_group_size: 4,
-                   loss_tolerance: 339,
-                   available_budget: 339,
-                   min_spend: 10,
-                   max_discount: 0.23 }
+    promo_params = {
+                     name: "PromoTest",
+                     min_group_size: 2,
+                     max_group_size: 8,
+                     preferred_group_size: 4,
+                     loss_tolerance: 339,
+                     available_budget: 2,
+                     min_spend: 10,
+                     max_discount: 0.23
+                   }
     @promotion = Promotion.create(promo_params)
-    ticket_params = { discount: 0.1,
+
+    ticket_params = {
+                      discount: 0.1,
                       min_total_spend: 20,
                       group_size: 2,
                       active: true,
                       loss_per_ticket: 2,
-                      promotion: @promotion }
+                      promotion: @promotion
+                    }
     @ticket = Ticket.create(ticket_params)
-    purchase_params = { purchaser_name: "Jane",
+
+    purchase_params = {
+                        purchaser_name: "Jane",
                         phone_number: "213-447-6726",
-                        ticket: @ticket }
+                        ticket: @ticket
+                      }
     @purchase = Purchase.create(purchase_params)
   end
 
@@ -47,18 +55,20 @@ describe Purchase do
     end
 
     it "creates a unique confirmation id" do
-      purchase_params = { purchaser_name: "Matthew Gray",
+      purchase_params = {
+                          purchaser_name: "Matthew Gray",
                           phone_number: "222-555-8888",
-                          ticket: @ticket }
+                          ticket: @ticket
+                        }
       second_purchase = Purchase.create(purchase_params)
       second_id = second_purchase.create_confirmation_id
       expect(@purchase.create_confirmation_id).to_not eq(second_id)
     end
   end
 
-  xdescribe "#check_current_tickets" do
+  describe "#check_current_tickets" do
     it "returns information about the ticket being purchased" do
-      expect(@purchase.check_current_tickets).to be(2)
+      expect(@purchase.check_current_tickets).to be(339)
     end
   end
 
