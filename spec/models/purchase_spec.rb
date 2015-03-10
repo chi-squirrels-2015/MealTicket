@@ -19,7 +19,6 @@ describe Purchase do
                       loss_per_ticket: 2,
                       promotion: @promotion }
     @ticket = Ticket.create(ticket_params)
-
     purchase_params = { purchaser_name: "Jane",
                         phone_number: "213-447-6726",
                         ticket: @ticket }
@@ -27,7 +26,7 @@ describe Purchase do
   end
 
   describe "Validations" do
-  let(:faulty_purchase) { Purchase.new() }
+    let(:faulty_purchase) { Purchase.new() }
 
     it "requires a phone number" do
       expect(faulty_purchase.id).to be(nil)
@@ -58,12 +57,15 @@ describe Purchase do
   end
 
   xdescribe "#check_current_tickets" do
-    it "" do
+    it "returns information about the ticket being purchased" do
+      expect(@purchase.check_current_tickets).to be(2)
     end
   end
 
-  xdescribe "#confirm!" do
-    it "" do
+  describe "#confirm!" do
+    it "updates purchase with a confirmation number" do
+      @purchase.confirm!
+      expect(@purchase.confirmation_id).to_not be(nil)
     end
   end
 
