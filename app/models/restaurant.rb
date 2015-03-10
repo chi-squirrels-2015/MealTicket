@@ -15,4 +15,22 @@ class Restaurant < ActiveRecord::Base
     "#{address} #{zipcode}"
   end
 
+  def to_geoJSON
+    {
+      features: [{
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [self.longitude, self.latitude]
+        },
+        properties: {
+          id: self.id,
+          name: self.name,
+          address: self.address
+
+        }
+      }]
+    }
+  end
+
 end
