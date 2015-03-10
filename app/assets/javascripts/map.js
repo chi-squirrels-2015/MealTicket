@@ -4,37 +4,46 @@ $(document).ready(function(){
 
   var map = L.mapbox.map('map', 'airwin33.ldh7b6gb').locate({setView: true, maxZoom: 14});
 
-  map.on('locationfound', function(event){
-    var currentLoc = L.marker(event.latlng).addTo(map);
-    myLayer = L.mapbox.featureLayer()
-      .loadURL('/closest_restaurants?lat=' + currentLoc.getLatLng().lat + '&lng=' + currentLoc.getLatLng().lng)
-      .addTo(map);
+  var currentLoc = L.marker();
+  var markerLayer = L.mapbox.featureLayer(); 
 
-
-    myLayer.on('layeradd', function(e){
-    var marker = e.layer,
-      feature = marker.feature;
-
-    var content = e.layer.feature.properties
-    var content = '<p>' + content.name + '</p>' + '<p>' + content.address + '</p>' + '<form action="/restaurants/' + content.id + '"><input type="submit" value="View Promotions"></form>'
-
-    // <form action="/">
-    // <input type="submit" value="View Promotions">
-    // </form>
-
-    marker.bindPopup(content);
-    moreshit = content
-
-    });
-
-    // question: will this change the latlng?
-
-    myLayer.on('click', function(e) {
-        map.panTo(e.layer.getLatLng());
-    });
-
+  var geocoderControl = L.mapbox.geocoderControl('mapbox.places');
+  geocoderControl.addTo(map);
+  var locateControl = L.control.locate({drawCircle: false, keepCurrentZoomLevel: true, locateOptions: {maxZoom:14}, showPopup: false});
+  locateControl.addTo(map);
+ 
+  geocoderControl.on('found', function(response){ 
+    var lat = response.results.features[0].geometry.coordinates[1];
+    var lng = response.results.features[0].geometry.coordinates[0];
+    currentLoc.setLatLng([lat,lng]).addTo(map);
+      
+    markerLayer.clearLayers();
+    addMarkers();
   });
 
+  map.on('locationfound', function(event){
+    currentLoc.setLatLng(event.latlng).addTo(map);
+    markerLayer.clearLayers();
+    addMarkers();
+  });
 
+  var addMarkers = function() {
+    markerLayer.loadURL('/closest_restaurants?lat=' + currentLoc.getLatLng().lat + '&lng=' + currentLoc.getLatLng().lng)
+      .addTo(map);
+
+    markerLayer.on('layeradd', function(e){
+      var marker = e.layer,
+          feature = marker.feature;
+
+      var content = e.layer.feature.properties
+      var content = '<p>' + content.name + '</p>' + '<p>' + content.address + '</p>' + '<form action="/restaurants/' + content.id + '"><input type="submit" value="View Promotions"></form>'
+
+      marker.bindPopup(content);
+
+    });
+
+    markerLayer.on('click', function(e) {
+      map.panTo(e.layer.getLatLng());
+    });
+  }
 });
-

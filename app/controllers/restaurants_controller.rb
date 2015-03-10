@@ -54,6 +54,7 @@ class RestaurantsController < ApplicationController
             id: restaurant.id,
             name: restaurant.name,
             address: restaurant.address
+
           }
         }]
       }
