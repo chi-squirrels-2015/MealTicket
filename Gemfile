@@ -39,11 +39,6 @@ gem 'twilio-ruby'
 # For ratings
 gem 'yelp', require: 'yelp'
 
-gem 'twilio-ruby'
-
-
-
-
 # Bootstrap Sass
 gem 'bootstrap-sass', '~> 3.3.3'
 
