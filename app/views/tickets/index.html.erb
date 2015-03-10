@@ -1,4 +1,4 @@
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <div class="row">
   <div class="ticket-row-height col-md-3"><strong>Restaurant Name</strong></div>
   <div class="ticket-row-height col-md-2"><strong>Minimum Spend</strong></div>
@@ -7,18 +7,19 @@
   <div class="ticket-row-height col-md-2"><strong>Buy</strong></div>
 </div>
 
-<% @tickets.each do |ticket| %>
+<%# @tickets.each do |ticket| %>
   <div class="row">
-    <div class="ticket-row-height col-md-3"><%= ticket.promotion.restaurant.name %></div>
-    <div class="ticket-row-height col-md-2"><%= number_to_currency(ticket.min_total_spend, locale: :en) %></div>
-    <div class="ticket-row-height col-md-2"><%= number_to_percentage(ticket.discount * 100, precision: 2)%></div>
-    <div class="ticket-row-height col-md-2"><%= number_to_currency(ticket.ticket_price, locale: :en) %></div>
+    <div class="ticket-row-height col-md-3"><%#= ticket.promotion.restaurant.name %></div>
+    <div class="ticket-row-height col-md-2"><%#= number_to_currency(ticket.min_total_spend, locale: :en) %></div>
+    <div class="ticket-row-height col-md-2"><%#= number_to_percentage(ticket.discount * 100, precision: 2)%></div>
+    <div class="ticket-row-height col-md-2"><%#= number_to_currency(ticket.ticket_price, locale: :en) %></div>
     <div class="ticket-row-height col-md-2">
-      <%= form_tag new_purchase_path, method: :get do %>
-        <input type="hidden" name="purchase[ticket_id]" value="<%= ticket.id %>">
+      <%#= form_tag new_purchase_path, method: :get do %>
+        <input type="hidden" name="purchase[ticket_id]" value="<%#= ticket.id %>">
         <input type="submit" value="Purchase">
-      <% end %>
+      <%# end %>
     </div>
   </div>
-  <% break if ticket.id > 10 %>
-<% end %>
+  <%# break if ticket.id > 10 %>
+<%# end %>
+ -->
