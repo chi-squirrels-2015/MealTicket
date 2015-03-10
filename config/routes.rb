@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :tickets, only: [:index, :show]
+  # resources :tickets, only: [:index, :show]
 
   # Stripe
   resources :purchases, only: [:new, :create]
