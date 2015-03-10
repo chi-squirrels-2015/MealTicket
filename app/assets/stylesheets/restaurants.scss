@@ -1,17 +1,13 @@
 
 .view-tickets {
   border: none;
-}
-
-.ticket-hr {
-  border-top: 1px solid #333;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 .view-tickets-promo-name {
   font-weight: 500;
   font-size: 18px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #F07241;
   padding: 0px 0px 10px 5px;
 }
 
@@ -58,6 +54,8 @@
 .purchase-ticket-btn {
   margin: 7px 0;
   width: 75px;
+  background-color: #F07241;
+  border: none;
 }
 
 .restaurant-show-details {
