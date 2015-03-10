@@ -9,7 +9,8 @@ $(document).ready(function(){
 
   var geocoderControl = L.mapbox.geocoderControl('mapbox.places');
   geocoderControl.addTo(map);
-  var locateControl = L.control.locate({drawCircle: false, keepCurrentZoomLevel: true, locateOptions: {maxZoom:14}}).addTo(map);
+  var locateControl = L.control.locate({drawCircle: false, keepCurrentZoomLevel: true, locateOptions: {maxZoom:14}, showPopup: false});
+  locateControl.addTo(map);
  
   geocoderControl.on('found', function(response){ 
     var lat = response.results.features[0].geometry.coordinates[1];
@@ -18,12 +19,6 @@ $(document).ready(function(){
       
     markerLayer.clearLayers();
     addMarkers();
-  });
-
-  $('#geolocate').on("click", function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    map.locate({setView: true});
   });
 
   map.on('locationfound', function(event){
