@@ -4,50 +4,51 @@
 </script>
 
 <%= form_tag purchases_path, id: 'purchase-form', method: :post do %>
-  <div class="payment-errors"></div>
+  <div class="form-group col-md-4">
+    <div class="payment-errors"></div>
 
-  <input type="hidden" name="purchase[ticket_id]" value="<%= @ticket.id %>">
+    <input class="form-control" type="hidden" name="purchase[ticket_id]" value="<%= @ticket.id %>">
 
-  <div>
-    <label for="purchaser_name">Purchaser Name:</label>
-    <input id="purchaser_name" type="text" name="purchase[purchaser_name]" />
+    <div class="form-group">
+      <label for="purchaser_name">Purchaser Name</label>
+      <input class="form-control" id="purchaser_name" type="text" name="purchase[purchaser_name]" />
+    </div>
+
+    <div class="form-group">
+      <label for="phone_number">Phone Number</label>
+      <input class="form-control" id="phone_number" type="text" name="purchase[phone_number]" />
+    </div>
+
+    <div class="form-group">
+      <label for="phone_number">Email</label>
+      <input class="form-control" id="phone_number" type="text" name="purchase[email]" />
+    </div>
+
+    <div class="form-group">
+      <label for="card-number">Card Number</label>
+      <input class="form-control" id="card-number" type="text" data-stripe="number" />
+    </div>
+
+    <div class="form-group">
+      <label for="card-exp-month">Card Expiration Month</label>
+      <input class="form-control" id="card-exp-month" type="text" data-stripe="exp_month" />
+    </div>
+
+    <div class="form-group">
+      <label for="card-exp-year">Card Expiration Year</label>
+      <input class="form-control" id="card-exp-year" type="text" data-stripe="exp_year" />
+    </div>
+
+    <div class="form-group">
+      <label for="card-cvc">CVC</label>
+      <input class="form-control" id="card-cvc" type="text" data-stripe="cvc" />
+    </div>
+
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary" value="Purchase Ticket">
+    </div>
+
   </div>
-
-  <div>
-    <label for="phone_number">Phone Number:</label>
-    <input id="phone_number" type="text" name="purchase[phone_number]" />
-  </div>
-
-  <div>
-    <label for="phone_number">Email:</label>
-    <input id="phone_number" type="text" name="purchase[email]" />
-  </div>
-
-  <div>
-    <label for="card-number">Card Number:</label>
-    <input id="card-number" type="text" data-stripe="number" />
-  </div>
-
-  <div>
-    <label for="card-exp-month">Card Expiration Month:</label>
-    <input id="card-exp-month" type="text" data-stripe="exp_month" />
-  </div>
-
-  <div>
-    <label for="card-exp-year">Card Expiration Year:</label>
-    <input id="card-exp-year" type="text" data-stripe="exp_year" />
-  </div>
-
-  <div>
-    <label for="card-cvc">CVC:</label>
-    <input id="card-cvc" type="text" data-stripe="cvc" />
-  </div>
-
-  <div>
-    <input type="submit" value="Purchase Ticket">
-  </div>
-
-  <div>
 <% end %>
 
 <%= javascript_include_tag "purchases.js" %>
