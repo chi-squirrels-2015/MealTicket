@@ -68,7 +68,10 @@ describe Purchase do
 
   describe "#check_current_tickets" do
     it "returns information about the ticket being purchased" do
-      expect(@purchase.check_current_tickets).to be(339)
+      tickets_array = @purchase.check_current_tickets
+      tickets_array.each do |ticket|
+        expect(ticket).to be(true)
+      end
     end
   end
 
