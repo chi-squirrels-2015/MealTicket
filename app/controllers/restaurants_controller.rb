@@ -30,16 +30,21 @@ class RestaurantsController < ApplicationController
     @geojson = []
     closest.each do |restaurant|
       @geojson << {
-        type: "Feature",
-        geometry: {
-          type: "Point",
-          coordinates: [restaurant.longitude, restaurant.latitude]
-        },
-        properties: {
-          name: restaurant.name,
-          address: restaurant.address
-        }
+        features: [{
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [restaurant.longitude, restaurant.latitude]
+          },
+          properties: {
+            id: restaurant.id,
+            name: restaurant.name,
+            address: restaurant.address
+
+          }
+        }]
       }
+
     end
     render json: @geojson
   end
