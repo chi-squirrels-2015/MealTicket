@@ -13,23 +13,11 @@ class PromotionsController < ApplicationController
     promo['max_discount'] = promotion_params['max_discount'].to_f / 100
     @restaurant = Restaurant.find(params[:restaurant_id])
     @promotion = @restaurant.promotions.build(promo)
-    
+
     if @promotion.save
       redirect_to restaurant_path(@restaurant)
-
-    account_sid = 'AC4e7f62423e77cd36e42d12a819296124' 
-    auth_token = 'd387d7f38479e494bebd290f29a283df' 
-
-    client = Twilio::REST::Client.new account_sid, auth_token
-
-    client.messages.create({
-      from: "+13123131171",
-      to:   @promotion.name,
-      body: "Hey, you just created a new promotion: #{@promotion.name}!"
-      })
-
     else
-      puts @promotion.errors.full_messages
+      @errors = @promotion.errors
       render :new
     end
   end
