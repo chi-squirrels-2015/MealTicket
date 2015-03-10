@@ -1,0 +1,65 @@
+
+.view-tickets {
+  border: none;
+  margin-top: 30px;
+}
+
+.view-tickets-promo-name {
+  font-weight: 500;
+  font-size: 18px;
+  border-bottom: 1px solid #F07241;
+  padding: 0px 0px 10px 5px;
+}
+
+.ticket-header-item {
+  text-align: center;
+  display: inline-block;
+  width: 26%;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.ticket-header-item-group {
+  text-align: center;
+  display: inline-block;
+  width: 12%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 5px;
+  padding-left: 5px;
+}
+
+.view-tickets-data {
+  margin-bottom: 25px;
+}
+
+.ticket-data-item {
+  display: inline-block;
+  width: 26%;
+  text-align: center;
+}
+
+.ticket-data-item-group {
+  display: inline-block;
+  width: 12%;
+  text-align: center;
+}
+
+.ticket-form {
+  display: inline-block;
+}
+
+.purchase-ticket-btn {
+  margin: 7px 0;
+  width: 75px;
+  background-color: #F07241;
+  border: none;
+}
+
+.restaurant-show-details {
+  margin-bottom: 0;
+}
+
+

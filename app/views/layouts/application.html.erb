@@ -3,6 +3,8 @@
 <head>
   <title>MealTicket</title>
   <%= stylesheet_link_tag    'application' %>
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,400,700' rel='stylesheet' type='text/css'>
   <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
   <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js'></script>
   <%= javascript_include_tag 'application' %>
@@ -15,9 +17,6 @@
   <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css' rel='stylesheet' />
 
 </head>
-<style>
-  #map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
 
 <body>
   <%= render "navigation/topnav" %>

@@ -1,0 +1,14 @@
+#map { position:absolute; top:120px;left:0;bottom:0; width:100%; }
+
+.leaflet-popup {
+  left: -110px !important;
+} 
+.leaflet-popup-content {
+  width: 250px;
+  font-family: 'Lato' !important;
+  input {
+    background-color: #F07241;
+    border: none;
+    font-size: 14px;
+  }
+}

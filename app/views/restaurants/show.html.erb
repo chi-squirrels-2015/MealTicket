@@ -1,36 +1,38 @@
-<div class="container">
+<!-- <div class="container-fluid"> -->
   <h3><%= @restaurant.name %></h3>
-  <h4><%= @restaurant.cuisine %></h4>
-  <h4><%= @restaurant.address %></h4>
-  <h4><%= (@restaurant.display_phone).gsub(/\+1-/, "") %></h4>
-  <hr></hr>
+  <p class="restaurant-show-details"><%= @restaurant.cuisine %></p>
+  <p class="restaurant-show-details"><%= @restaurant.address %></p>
+  <p class="restaurant-show-details"><%= (@restaurant.display_phone).gsub(/\+1-/, "") %></p>
 
-  <table class="table">
-  <% @restaurant.promotions.each do |promotion| %>
-    <thead><th><%= promotion.name %></th></thead>
-    <tr>
-      <td>Group Size</td>
-      <td>Minimum Spend</td>
-      <td>Discount</td>
-      <td>Ticket Price</td>
-      <td>Purchase</td>
-    </tr>
-      <% promotion.tickets.each do |ticket| %>
-      <tr>
-        <td><%= ticket.group_size %></td>
-        <td><%= number_to_currency(ticket.min_total_spend, locale: :en) %></td>
-        <td><%= number_to_percentage(ticket.discount * 100, precision: 2) %></td>
-        <td><%= number_to_currency(ticket.ticket_price, locale: :en) %></td>
-        <td>
-          <%= form_tag new_purchase_path, method: :get do %>
+
+  <div class="view-tickets">
+    <% @restaurant.promotions.each do |promotion| %>
+      <div class="view-tickets-promo-name">
+        <%= promotion.name %>
+      </div>
+      <div class="view-tickets-header">
+        <span class="ticket-header-item-group">Group</span>
+        <span class="ticket-header-item">Value</span>
+        <span class="ticket-header-item">Discount</span>
+        <span class="ticket-header-item">Purchase</span>
+      </div>
+      <div class="view-tickets-data">
+        <% promotion.tickets.each do |ticket| %>
+        <span class="ticket-data-item-group">
+          <%= ticket.group_size %>
+        </span>
+        <span class="ticket-data-item">
+          <%= number_to_currency(ticket.min_total_spend, locale: :en) %>
+        </span>
+        <span class="ticket-data-item">
+          <%= number_to_percentage(ticket.discount * 100, precision: 2) %>
+        </span>
+        <%= form_tag new_purchase_path, method: :get, class: "ticket-form ticket-data-item" do %>
             <input type="hidden" name="purchase[ticket_id]" value="<%= ticket.id %>">
-            <input type="submit" value="Purchase">
+            <input type="submit" class="btn btn-primary btn-xs purchase-ticket-btn" value="<%=number_to_currency(ticket.ticket_price, locale: :en)%>">
           <% end %>
-        </td>
-      </tr>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
-  </table>
-</div>
-
-<%= javascript_include_tag "tickets.js" %>
+  </div>
+<!-- </div> -->

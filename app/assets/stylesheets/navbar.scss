@@ -5,12 +5,20 @@
   left: 0;
   text-align: center;
   margin: auto;
+  font-family: "Oswald", sans-serif;
+  font-size: 50px;
+  color: #F07241;
 }
 
 .navbar {
-  background-color: #FF7800;
+  background-color: #333;
   border-radius: 0px;
   margin-bottom: 0px;
+  height: 120px;
+}
+
+.navbar-header {
+  margin-top: 20px;
 }
 
 .jumbotron {
@@ -27,4 +35,12 @@
   height: 350px;
   text-align: center;
   padding: 50px;
+}
+
+.map-explanation {
+  text-align: center;
+  color: #cecece;
+  font-weight: 100;
+  margin-top: 15px;
+  font-size: 18px;
 }
