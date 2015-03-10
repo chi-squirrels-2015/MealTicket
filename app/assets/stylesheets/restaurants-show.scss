@@ -1,0 +1,30 @@
+
+.view-tickets {
+  border: none;
+}
+
+.view-tickets thead {
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
+}
+
+.view-tickets th {
+  padding-left: 5%;
+  padding-bottom: 5%;
+  padding-top: 5%;
+}
+
+.view-tickets td {
+  height: 30px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.view-tickets-header td {
+  font-weight: bold;
+  text-align: center;
+}
+
+.restaurant-show-details {
+  margin-bottom: 0;
+}

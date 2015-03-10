@@ -1,16 +1,16 @@
-<div class="container">
-  <h3><%= @restaurant.name %></h3>
-  <h4><%= @restaurant.cuisine %></h4>
-  <h4><%= @restaurant.address %></h4>
-  <h4><%= (@restaurant.display_phone).gsub(/\+1-/, "") %></h4>
+<!-- <div class="container-fluid"> -->
+  <h4><%= @restaurant.name %></h4>
+  <p class="restaurant-show-details"><%= @restaurant.cuisine %></p>
+  <p class="restaurant-show-details"><%= @restaurant.address %></p>
+  <p class="restaurant-show-details"><%= (@restaurant.display_phone).gsub(/\+1-/, "") %></p>
   <hr></hr>
 
-  <table class="table">
+  <table class="table-responsive view-tickets">
   <% @restaurant.promotions.each do |promotion| %>
     <thead><th><%= promotion.name %></th></thead>
-    <tr>
-      <td>Group Size</td>
-      <td>Minimum Spend</td>
+    <tr class="view-tickets-header">
+      <td>Group</td>
+      <td>Value</td>
       <td>Discount</td>
       <td>Ticket Price</td>
       <td>Purchase</td>
@@ -24,13 +24,11 @@
         <td>
           <%= form_tag new_purchase_path, method: :get do %>
             <input type="hidden" name="purchase[ticket_id]" value="<%= ticket.id %>">
-            <input type="submit" value="Purchase">
+            <input type="submit" class="btn btn-primary btn-xs" value="Purchase">
           <% end %>
         </td>
       </tr>
       <% end %>
     <% end %>
   </table>
-</div>
-
-<%= javascript_include_tag "tickets.js" %>
+<!-- </div> -->
