@@ -16,12 +16,10 @@ $(document).ready(function(){
       feature = marker.feature;
 
     var content = e.layer.feature.properties
-
     var content = '<p>' + content.name + '</p>' + '<p>' + content.address + '</p>' + '<form action="/restaurants/' + content.id + '"><input type="submit" value="View Promotions"></form>'
 
-
     marker.bindPopup(content);
-    moreshit = content
+   
 
     });
 
