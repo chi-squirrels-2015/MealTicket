@@ -1,4 +1,9 @@
 class RestaurantsController < ApplicationController
+
+  ####################
+  #### ADMIN SIDE ####
+  ####################
+
   def index
     @restaurants = Restaurant.all
     render json: @restaurants
@@ -16,13 +21,22 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
   end
 
-  def show
-    @restaurant = Restaurant.find(params[:id])
-  end
-
   def create
     @restaurant = Restaurant.create(restaurant_params)
-    redirect_to @restaurant
+    redirect_to dashboard_path
+  end
+
+  def dashboard
+    @restaurant = Restaurant.find(params[:user_id])
+  end
+
+
+  #####################
+  #### PATRON SIDE ####
+  #####################
+
+  def show
+    @restaurant = Restaurant.find(params[:id])
   end
 
   def closest
@@ -40,7 +54,6 @@ class RestaurantsController < ApplicationController
             id: restaurant.id,
             name: restaurant.name,
             address: restaurant.address
-
           }
         }]
       }
