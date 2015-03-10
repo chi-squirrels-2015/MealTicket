@@ -50,7 +50,8 @@ class Promotion < ActiveRecord::Base
       min_total_spend: min_total_spend,
       discount: discount,
       loss_per_ticket: loss_per_ticket,
-      ticket_price: ticket_price
+      ticket_price: ticket_price,
+      active: true
     }
   end
 
