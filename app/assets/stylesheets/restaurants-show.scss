@@ -3,26 +3,41 @@
   border: none;
 }
 
-.view-tickets thead {
-  border-bottom: 1px solid gray;
-  padding-bottom: 10px;
+.ticket-hr {
+  border-top: 1px solid #333;
 }
 
-.view-tickets th {
-  padding-left: 5%;
-  padding-bottom: 5%;
-  padding-top: 5%;
+.view-tickets-promo-name {
+  font-size: 18px;
+  border-bottom: 1px solid #333;
 }
 
-.view-tickets td {
-  height: 30px;
-  font-size: 10px;
+.ticket-header-item {
+  text-align: center;
+  display: inline-block;
+  width: 23%;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.view-tickets-data {
+  margin-bottom: 25px;
+}
+
+.ticket-data-item {
+  display: inline-block;
+  width: 23%;
   text-align: center;
 }
 
-.view-tickets-header td {
-  font-weight: bold;
-  text-align: center;
+.ticket-form {
+  display: inline-block;
+}
+
+.purchase-ticket-btn {
+  margin: 7px 0;
+  width: 75px;
 }
 
 .restaurant-show-details {
