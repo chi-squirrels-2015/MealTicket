@@ -9,17 +9,6 @@ class PromotionsController < ApplicationController
   end
 
   def create
-    promo = promotion_params.to_h
-    promo['max_discount'] = promotion_params['max_discount'].to_f / 100
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    @promotion = @restaurant.promotions.build(promo)
-
-    if @promotion.save
-      redirect_to restaurant_path(@restaurant)
-    else
-      @errors = @promotion.errors
-      render :new
-    end
   end
 
   def show

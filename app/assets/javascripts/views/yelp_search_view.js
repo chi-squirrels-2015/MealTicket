@@ -25,7 +25,6 @@ var YelpSearchView = Backbone.View.extend({
       } else {
         this.$el.append(JST["templates/yelp_results"]({collection: this.collection}));
       }
-      
     }.bind(this));
   }
 });

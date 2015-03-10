@@ -9,16 +9,9 @@ $(function(){
       $("#max_group_size").val( ui.values[1]);
   	},
     change: function(event, ui) {
-      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
-      ticketsPreviewCollection.fetch().done(function(response) {
-        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
-        previewTicketsView.render();
-        previewTicketsView.addAll();
-        $("#promotion-preview").html(previewTicketsView.el);
-      });
     }
   });
-  
+
   $("#min_group_size").val($("#group_size_slider").slider("values", 0));
   $("#max_group_size").val($("#group_size_slider").slider("values", 1));
 
@@ -31,13 +24,6 @@ $(function(){
   		$("#preferred_group_size").val(ui.value);
   	},
     change: function(event, ui) {
-      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
-      ticketsPreviewCollection.fetch().done(function(response) {
-        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
-        previewTicketsView.render();
-        previewTicketsView.addAll();
-        $("#promotion-preview").html(previewTicketsView.el);
-      });
     }
   });
   $("#preferred_group_size").val( $( "#pref_group_size_slider").slider( "value" ) );
@@ -62,13 +48,6 @@ $(function(){
   		$("#min_spend").val(ui.value);
   	},
     change: function(event, ui) {
-      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
-      ticketsPreviewCollection.fetch().done(function(response) {
-        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
-        previewTicketsView.render();
-        previewTicketsView.addAll();
-        $("#promotion-preview").html(previewTicketsView.el);
-      });
     }
   });
   $("#min_spend").val( $( "#min_spend_slider").slider( "value" ) );
@@ -82,23 +61,8 @@ $(function(){
   		$("#max_discount").val(ui.value);
   	},
     change: function(event, ui) {
-      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
-      ticketsPreviewCollection.fetch().done(function(response) {
-        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
-        previewTicketsView.render();
-        previewTicketsView.addAll();
-        $("#promotion-preview").html(previewTicketsView.el);
-      });
     }
   });
 
   $("#max_discount").val( $( "#max_disc_slider").slider("value") );
-
-  var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
-  ticketsPreviewCollection.fetch().done(function(response) {
-    var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
-    previewTicketsView.render();
-    previewTicketsView.addAll();
-    $("#promotion-preview").html(previewTicketsView.el);
-  });
 });

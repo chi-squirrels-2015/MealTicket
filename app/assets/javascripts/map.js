@@ -5,18 +5,18 @@ $(document).ready(function(){
   var map = L.mapbox.map('map', 'airwin33.ldh7b6gb').locate({setView: true, maxZoom: 14});
 
   var currentLoc = L.marker();
-  var markerLayer = L.mapbox.featureLayer(); 
+  var markerLayer = L.mapbox.featureLayer();
 
   var geocoderControl = L.mapbox.geocoderControl('mapbox.places');
   geocoderControl.addTo(map);
   var locateControl = L.control.locate({drawCircle: false, keepCurrentZoomLevel: true, locateOptions: {maxZoom:14}, showPopup: false});
   locateControl.addTo(map);
- 
-  geocoderControl.on('found', function(response){ 
+
+  geocoderControl.on('found', function(response){
     var lat = response.results.features[0].geometry.coordinates[1];
     var lng = response.results.features[0].geometry.coordinates[0];
     currentLoc.setLatLng([lat,lng]).addTo(map);
-      
+
     markerLayer.clearLayers();
     addMarkers();
   });
