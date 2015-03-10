@@ -75,7 +75,7 @@ describe Promotion do
 
     it "contains the params of a ticket" do
       expect(ticket.keys).to(
-        eq([:group_size, :min_total_spend, :discount, :loss_per_ticket, :ticket_price]))
+        eq([:group_size, :min_total_spend, :discount, :loss_per_ticket, :ticket_price, :active]))
     end
 
     it "has the proper discount" do
