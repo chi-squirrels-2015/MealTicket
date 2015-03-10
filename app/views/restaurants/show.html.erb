@@ -1,5 +1,5 @@
 <!-- <div class="container-fluid"> -->
-  <h4><%= @restaurant.name %></h4>
+  <h3><%= @restaurant.name %></h3>
   <p class="restaurant-show-details"><%= @restaurant.cuisine %></p>
   <p class="restaurant-show-details"><%= @restaurant.address %></p>
   <p class="restaurant-show-details"><%= (@restaurant.display_phone).gsub(/\+1-/, "") %></p>
@@ -12,14 +12,14 @@
         <%= promotion.name %>
       </div>
       <div class="view-tickets-header">
-        <span class="ticket-header-item">Group</span>
+        <span class="ticket-header-item-group">Group</span>
         <span class="ticket-header-item">Value</span>
         <span class="ticket-header-item">Discount</span>
         <span class="ticket-header-item">Purchase</span>
       </div>
       <div class="view-tickets-data">
         <% promotion.tickets.each do |ticket| %>
-        <span class="ticket-data-item">
+        <span class="ticket-data-item-group">
           <%= ticket.group_size %>
         </span>
         <span class="ticket-data-item">

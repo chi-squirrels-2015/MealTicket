@@ -5,6 +5,7 @@
 
 .ticket-hr {
   border-top: 1px solid #333;
+  margin-top: 15px;
 }
 
 .view-tickets-promo-name {
@@ -17,10 +18,21 @@
 .ticket-header-item {
   text-align: center;
   display: inline-block;
-  width: 23%;
+  width: 26%;
   font-size: 12px;
   font-weight: 600;
   margin-top: 5px;
+}
+
+.ticket-header-item-group {
+  text-align: center;
+  display: inline-block;
+  width: 12%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 5px;
+  padding-left: 5px;
 }
 
 .view-tickets-data {
@@ -29,7 +41,13 @@
 
 .ticket-data-item {
   display: inline-block;
-  width: 23%;
+  width: 26%;
+  text-align: center;
+}
+
+.ticket-data-item-group {
+  display: inline-block;
+  width: 12%;
   text-align: center;
 }
 
