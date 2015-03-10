@@ -27,8 +27,6 @@ class PurchasesController < ApplicationController
 
         render "purchases/create"
       end
-    else
-      @purchase.errors.full_message
     end
 
     rescue Stripe::CardError => stripe_error
