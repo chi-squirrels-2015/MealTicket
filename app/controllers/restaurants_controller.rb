@@ -22,7 +22,13 @@ class RestaurantsController < ApplicationController
   end
 
   def create
+    puts restaurant_params
     @restaurant = Restaurant.create(restaurant_params)
+    puts "=========================================="
+    puts "=========================================="
+    puts "##################################" if current_owner
+    puts "=========================================="
+    puts "=========================================="
     redirect_to dashboard_path
   end
 
