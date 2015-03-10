@@ -11,8 +11,6 @@ class Restaurant < ActiveRecord::Base
   geocoded_by :geocoder_address
   after_validation :geocode
 
-  private
-
   def geocoder_address
     "#{address} #{zipcode}"
   end

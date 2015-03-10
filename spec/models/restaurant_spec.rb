@@ -40,12 +40,22 @@ describe Restaurant do
       expect(restaurant.errors).to include(:cuisine)
     end
   end
+
+  describe "#geocoder_address" do
+    let!(:restaurant) { Restaurant.create(restaurant_params) }
+    
+    it "concatinates an address and zipcode" do
+      expect(restaurant.geocoder_address).to eq("351 W Hubbard Street Chicago, IL 60654")
+    end
+
+
+  end
 end
 
 def restaurant_params
   { yelp_id: "chicago",
     name: "Bob's Burgers",
-    address: "351 W Hubbard Street",
+    address: "351 W Hubbard Street Chicago, IL",
     zipcode: "60654",
     display_phone: "123-456-7890",
     cuisine: "Ruby" }
