@@ -62,4 +62,14 @@
   margin-bottom: 0;
 }
 
+#promo-date-picker {
+  line-height: inherit;
+}
 
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
