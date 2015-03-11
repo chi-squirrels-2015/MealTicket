@@ -1,18 +1,14 @@
 <div class="container">
-  <div class="dashboard-header-container">
-    <div class="dashboard-restaurant-data">
-      <h1><%= @restaurant.name %></h1>
-      <h3><%= @restaurant.cuisine %></h3>
-    </div>
 
-    <div class="dashboard-new-promo-button">
-      <%= link_to "Create A New Promotion", new_restaurant_promotion_path(:restaurant_id => @restaurant.id), class: "dashboard-promo-btn btn btn-lg btn-primary" %>
-    </div>
+  <h1><%= current_restaurant.name %></h1>
+  <h3><%= current_restaurant.cuisine %></h3>
+  <% current_restaurant.promotions.each do |promotion| %>
+    <div class="col-md-4">
+      <div class="btn btn-lg btn-primary btn-block">
+        <%= promotion.name %>
+      </div>
+      <%= render :partial =>  "promotions/ticket", locals: {promotion: promotion} %>
 
-    <hr class="dashboard-hr"></hr>
-  </div>
-
-  <br><br>
 
   <div class="col-md-4 all-promos">
     <% @restaurant.promotions.each do |promotion| %>
@@ -37,11 +33,15 @@
           </tbody>
         </table>
       </div>
-    <% end %>
-  </div>
 
-  <div class="col-md-offset-1 col-md-7 ticket-div">
-  </div>
+    </div>
+  <% end %>
+    <div class="special-container col-md-4">
+      <div class="btn btn-lg btn-primary btn-block">
+        <%= link_to "New Promotion", new_restaurant_promotion_path(:restaurant_id => current_restaurant.id) %>
+      </div>
+    </div>
+
 
 </div>
 
