@@ -3,6 +3,8 @@
   Stripe.setPublishableKey('pk_test_HmnZw3G1iR2Bbhq1JmfudxvY');
 </script>
 
+<div id="flash-error"><%= flash[:error] %></div>
+
   <%= form_tag purchases_path, id: 'purchase-form', class: 'stripe-purchase-form', method: :post do %>
     <div class="stripe-purchase-form">
       <div class="payment-errors"></div>

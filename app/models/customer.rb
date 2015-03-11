@@ -31,6 +31,7 @@ class Customer
       to:   purchase.phone_number,
       body: body(purchase)
     })
+    p client.messages
   end
 
   def client
