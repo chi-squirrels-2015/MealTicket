@@ -27,6 +27,9 @@
         <span class="ticket-data-item">
           <%= number_to_percentage(ticket.discount * 100, precision: 2) %>
         </span>
+        <span class="ticket-data-item">
+          <%= ticket.valid_on.strftime("%B %d, %Y") %>
+        </span>
         <%= form_tag new_purchase_path, method: :get, class: "ticket-form ticket-data-item" do %>
             <input type="hidden" name="purchase[ticket_id]" value="<%= ticket.id %>">
             <input type="submit" class="btn btn-primary btn-xs purchase-ticket-btn" value="<%=number_to_currency(ticket.ticket_price, locale: :en)%>">
