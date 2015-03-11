@@ -14,7 +14,6 @@ class PurchasesController < ApplicationController
     if @purchase.ticket.active
       if @purchase.ticket.promotion.available_budget < @ticket.loss_per_ticket
         @purchase.ticket.update(active: false)
-        @purchase.errors.full_message
       else
         customer = Customer.new({
           email: params[:purchase][:email],
