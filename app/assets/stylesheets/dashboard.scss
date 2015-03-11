@@ -20,14 +20,6 @@
   clear: both;
 }
 
-/*.all-promos {
-  border: 1px solid black;
-}
-
-.single-promo {
-  border: 1px solid red;
-}*/
-
 .promo-table {
   /*border: 1px solid green;*/
   margin-bottom: 30px;;
@@ -73,6 +65,20 @@
 .ticket-div {
 }
 
+
+/*** NEW PROMOTION CSS ***/
+
+#promo-date-picker {
+  line-height: inherit;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 
 
