@@ -9,16 +9,10 @@ $(function(){
       $("#max_group_size").val( ui.values[1]);
   	},
     change: function(event, ui) {
-      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
-      ticketsPreviewCollection.fetch().done(function(response) {
-        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
-        previewTicketsView.render();
-        previewTicketsView.addAll();
-        $("#promotion-preview").html(previewTicketsView.el);
-      });
+      renderTicketsPreview();
     }
   });
-  
+
   $("#min_group_size").val($("#group_size_slider").slider("values", 0));
   $("#max_group_size").val($("#group_size_slider").slider("values", 1));
 
@@ -31,13 +25,7 @@ $(function(){
   		$("#preferred_group_size").val(ui.value);
   	},
     change: function(event, ui) {
-      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
-      ticketsPreviewCollection.fetch().done(function(response) {
-        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
-        previewTicketsView.render();
-        previewTicketsView.addAll();
-        $("#promotion-preview").html(previewTicketsView.el);
-      });
+      renderTicketsPreview();
     }
   });
   $("#preferred_group_size").val( $( "#pref_group_size_slider").slider( "value" ) );
@@ -51,6 +39,7 @@ $(function(){
   		$("#loss_tolerance").val(ui.value);
   	}
   });
+
   $("#loss_tolerance").val( $( "#loss_slider").slider( "value" ) );
 
   $('#min_spend_slider').slider({
@@ -61,16 +50,11 @@ $(function(){
   	slide: function( event, ui ){
   		$("#min_spend").val(ui.value);
   	},
-    change: function(event, ui) {
-      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
-      ticketsPreviewCollection.fetch().done(function(response) {
-        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
-        previewTicketsView.render();
-        previewTicketsView.addAll();
-        $("#promotion-preview").html(previewTicketsView.el);
-      });
+    change: function() {
+      renderTicketsPreview();
     }
   });
+
   $("#min_spend").val( $( "#min_spend_slider").slider( "value" ) );
 
   $('#max_disc_slider').slider({
@@ -82,23 +66,21 @@ $(function(){
   		$("#max_discount").val(ui.value);
   	},
     change: function(event, ui) {
-      var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
-      ticketsPreviewCollection.fetch().done(function(response) {
-        var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
-        previewTicketsView.render();
-        previewTicketsView.addAll();
-        $("#promotion-preview").html(previewTicketsView.el);
-      });
+      renderTicketsPreview();
     }
   });
 
   $("#max_discount").val( $( "#max_disc_slider").slider("value") );
 
-  var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
-  ticketsPreviewCollection.fetch().done(function(response) {
-    var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
-    previewTicketsView.render();
-    previewTicketsView.addAll();
-    $("#promotion-preview").html(previewTicketsView.el);
-  });
+  var renderTicketsPreview = function() {
+    var ticketsPreviewCollection = new PreviewTicketsCollection($("#new-promotion").serialize());
+    ticketsPreviewCollection.fetch().done(function(response) {
+      var previewTicketsView = new PreviewTicketsView({collection: ticketsPreviewCollection});
+      previewTicketsView.render();
+      previewTicketsView.addAll();
+      $("#promotion-preview").html(previewTicketsView.el);
+    });
+  };
+
+  renderTicketsPreview();
 });

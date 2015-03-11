@@ -7,16 +7,15 @@ var Restaurant = Backbone.Model.extend({
     zipcode: null,
     cuisine: null
   },
-  
-  parse: function(response) {
-    var attributes = {};
-    attributes.name = response.hash.name;
-    attributes.yelp_id = response.hash.id;
-    attributes.display_phone = response.hash.display_phone; // might need to default to null, when no phone number is listed on yelp
-    attributes.address = response.hash.location.display_address.join(" ");
-    attributes.zipcode = response.hash.location.postal_code;
-    attributes.cuisine = response.hash.categories[0][0];
 
-    return attributes;
+  parse: function(response) {
+    return {
+      name: response.hash.name,
+      yelp_id: response.hash.id,
+      display_phone: response.hash.display_phone,
+      address: response.hash.location.display_address.join(" "),
+      zipcode: response.hash.location.postal_code,
+      cuisine: response.hash.categories[0][0]
+    }
   }
 });
