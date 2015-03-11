@@ -24,15 +24,21 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    puts restaurant_params
-    @restaurant = Restaurant.create(restaurant_params)
-    @restaurant.owner_id = current_owner.id
-    @restaurant.save
-    redirect_to dashboard_path
+    @restaurant = Restaurant.new(restaurant_params)
+    require 'pry'; binding.pry
+    if @restaurant.save
+      session[:restaurant_id] = @restaurant.id
+      redirect_to dashboard_path
+    else
+      flash[:error] = "The Restaurant could not be saved"
+      render :new
+    end
   end
 
   def dashboard
-    @restaurant = Restaurant.find_by_owner_id(current_owner.id)
+    unless current_restaurant
+      redirect_to root_path
+    end
   end
 
 
@@ -57,6 +63,6 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.permit(:yelp_id, :name, :display_phone, :address, :zipcode, :cuisine)
+    params.permit(:yelp_id, :email, :name, :password, :display_phone, :address, :zipcode, :cuisine)
   end
 end
