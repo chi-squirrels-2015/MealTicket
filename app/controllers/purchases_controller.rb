@@ -24,8 +24,6 @@ class PurchasesController < ApplicationController
         customer.charge!(@amount, description: @promotion)
         @purchase.confirm!
         customer.send_confirmation_message!(@purchase)
-
-        render "purchases/create"
       end
     end
 
