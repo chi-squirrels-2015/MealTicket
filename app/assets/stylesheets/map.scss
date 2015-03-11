@@ -2,13 +2,17 @@
 
 .leaflet-popup {
   left: -110px !important;
-} 
+}
 .leaflet-popup-content {
   width: 250px;
   font-family: 'Lato' !important;
-  input {
+  .btn-promotions {
     background-color: #F07241;
     border: none;
     font-size: 14px;
+    color: white;
+  }
+  .btn-promotions:hover {
+    color: white;
   }
 }

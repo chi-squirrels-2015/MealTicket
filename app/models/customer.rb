@@ -56,7 +56,7 @@ Valid Date: #{purchase.ticket.promotion.valid_on}
 Group size: #{purchase.ticket.group_size}
 Confirmation code: #{purchase.confirmation_id}
 Discount: #{'%.2f' % (purchase.ticket.discount * 100)}%
-Purchase Price: $#{'%.2f' % purchase.ticket.ticket_price}
+Redemption Value: $#{'%.2f' % purchase.ticket.min_total_spend}
 
 Enjoy your meal!
     MSG
