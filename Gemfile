@@ -29,6 +29,9 @@ gem 'ejs'
 #bcrypt
 gem 'bcrypt'
 
+# Capybara
+gem 'capybara'
+
 #geocoding for restaurant locations
 gem 'geocoder'
 
