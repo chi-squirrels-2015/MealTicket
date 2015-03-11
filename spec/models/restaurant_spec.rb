@@ -58,5 +58,7 @@ def restaurant_params
     address: "351 W Hubbard Street Chicago, IL",
     zipcode: "60654",
     display_phone: "123-456-7890",
-    cuisine: "Ruby" }
+    cuisine: "Ruby",
+    email: "bob@bobsburgers.com",
+    password: "password" }
 end

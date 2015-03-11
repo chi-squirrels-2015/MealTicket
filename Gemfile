@@ -26,8 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # For rendering embedded javascript templates
 gem 'ejs'
 
-# Devise
-gem 'devise'
+#bcrypt
+gem 'bcrypt'
 
 #geocoding for restaurant locations
 gem 'geocoder'
