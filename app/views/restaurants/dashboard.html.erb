@@ -18,7 +18,7 @@
     <% @restaurant.promotions.each do |promotion| %>
       <div class="col-md-12 single-promo">
         <div class="view-tickets-btn btn btn-primary btn-block">
-          <%= promotion.name %>
+          <%= link_to promotion.name, class: "view-tickets-btn" %>
         </div>
 
         <!-- <div class="table-responsive"> -->
@@ -33,13 +33,15 @@
               <td><%= promotion.min_group_size %></td>
               <td><%= promotion.max_group_size %></td>
               <td><%= promotion.preferred_group_size %></td>
-              <td><%= promotion.loss_tolerance %></td>
+              <td><%= number_to_currency(promotion.loss_tolerance, locale: :en) %></td>
             </tbody>
           </table>
         <!-- </div> -->
       </div>
-
     <% end %>
+  </div>
+
+  <div class="col-md-6 ticket-div" style="display: none">
   </div>
 
 </div>
