@@ -1,4 +1,74 @@
-.restaurant-name {
+.dashboard-restaurant-data {
+  display: inline-block;
+  vertical-align: center;
+}
+
+.dashboard-new-promo-button {
+  display: inline-block;
+  margin-top: 20px;
+  margin-right: 10px;
+  float: right;
+  vertical-align: center;
+}
+
+.dashboard-hr {
+  border-top: 1px solid black;
+  clear: both;
+}
+
+/*.all-promos {
+  border: 1px solid black;
+}
+
+.single-promo {
+  border: 1px solid red;
+}*/
+
+.promo-table {
+  /*border: 1px solid green;*/
+  margin-bottom: 30px;;
+}
+
+.promo-table th {
+  width: 18%;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.promo-table thead {
+  width: 100%;
+}
+
+.promo-table td {
+  width: 18%;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.promo-table tbody {
+  width: 100%;
+}
+
+.view-tickets-btn {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.view-tickets-btn a {
+  color: white;
+}
+
+.ticket-div {
+  border: 1px solid black;
+  height: 80px;
+}
+
+
+
+
+/*.restaurant-name {
     text-align: center;
 }
 
@@ -17,4 +87,4 @@
 
 .ticket-row-height {
   line-height: 5em;
-}
+}*/
