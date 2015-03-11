@@ -15,7 +15,9 @@ sleep 2
 Restaurant.create!([{ "yelp_id"=>"bistro-campagne-chicago", "name"=>"Bistro Campagne", "display_phone"=>"+1-773-271-6100", "address"=>"4518 N Lincoln Ave Ravenswood Chicago, IL 60625", "zipcode"=>"60625", "cuisine"=>"French", "latitude"=>41.9636449, "longitude"=>-87.685632}, { "yelp_id"=>"southport-grocery-and-cafe-chicago", "name"=>"Southport Grocery & Cafe", "display_phone"=>"+1-773-665-0100", "address"=>"3552 N Southport Ave Lakeview Chicago, IL 60657", "zipcode"=>"60657", "cuisine"=>"Breakfast & Brunch", "latitude"=>41.946743, "longitude"=>-87.664357}, { "yelp_id"=>"the-boiler-room-chicago-2", "name"=>"The Boiler Room", "display_phone"=>"+1-773-276-5625", "address"=>"2210 N California Ave Logan Square Chicago, IL 60647", "zipcode"=>"60647", "cuisine"=>"Pizza", "latitude"=>41.9220745, "longitude"=>-87.6976054}])
 
 Restaurant.all.each do |restaurant|
+
   rand(2..4).times do |i|
+    range = [1,2,3,4]
     min_group_size = rand(2..4)
     max_group_size = rand(5..10)
     Promotion.create!(name: "Promo#{i}",
@@ -25,6 +27,7 @@ Restaurant.all.each do |restaurant|
                        loss_tolerance: rand(100..500),
                        min_spend: rand(10..50),
                        max_discount: rand(10..50) / 100.0,
-                       restaurant: restaurant)
+                       restaurant: restaurant,
+                       valid_on: Time.now + (24*60*60* range.sample))
   end
 end
