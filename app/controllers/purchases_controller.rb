@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   def new
-    @ticket = Ticket.find(params[:purchase][:ticket_id])
+    @view_model = PurchaseCreateViewModel.new(purchase_params, params[:stripeToken])
     @purchase = Purchase.new
   end
 
