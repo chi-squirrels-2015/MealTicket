@@ -53,4 +53,8 @@ class PurchaseCreateViewModel
   def confirmation_id
     purchase.confirmation_id
   end
+
+  def phone_number
+    purchase.phone_number
+  end
 end

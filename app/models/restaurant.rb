@@ -1,6 +1,6 @@
 class Restaurant < ActiveRecord::Base
+  has_secure_password
   has_many :promotions
-  belongs_to :owner
   
   validates :yelp_id, uniqueness: true
   validates :name, presence: true

@@ -1,4 +1,6 @@
 class PromotionsController < ApplicationController
+  respond_to :html, :js
+
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
     @promotions = @restaurant.promotions
@@ -32,6 +34,17 @@ class PromotionsController < ApplicationController
     promo['max_discount'] = promotion_params['max_discount'].to_f / 100
     @promotion = Promotion.new(promo)
     render json: @promotion.preview_tickets
+  end
+
+  def promotion_tickets
+    @promotion = Promotion.find(params[:id])
+    # render :partial =>  "promotions/ticket", locals: {promotion: @promotion}
+
+    respond_to do |format|
+      if @promotion
+        format.html { render :partial => "promotions/ticket", locals: {promotion: @promotion}, layout: false }
+      end
+    end
   end
 
   def promotion_params

@@ -21,6 +21,9 @@
 <body>
   <%= render "navigation/topnav" %>
   <div class="container">
+    <div class="flash-error">
+      <%=flash[:error]%>
+    </div>
     <%= yield %>
 
   </div>
