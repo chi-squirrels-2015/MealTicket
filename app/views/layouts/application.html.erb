@@ -20,12 +20,13 @@
 
 <body>
   <%= render "navigation/topnav" %>
-  <div class="container">
-    <div class="flash-error">
-      <%=flash[:error]%>
+  <div class="admin-background-container">
+    <div class="container">
+      <div class="flash-error">
+        <%=flash[:error]%>
+      </div>
+      <%= yield %>
     </div>
-    <%= yield %>
-
   </div>
 
 
