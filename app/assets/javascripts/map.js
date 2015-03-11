@@ -6,6 +6,9 @@ $(document).ready(function(){
 
   var currentLoc = L.marker();
   var markerLayer = L.mapbox.featureLayer();
+  markerLayer.on('click', function(e) {
+    map.panTo(e.layer.getLatLng());
+  });
 
   var geocoderControl = L.mapbox.geocoderControl('mapbox.places');
   geocoderControl.addTo(map);
