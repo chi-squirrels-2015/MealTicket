@@ -51,7 +51,7 @@ describe Purchase do
 
   describe "#create_confirmation_id" do
     it "creates a confirmation id that is 18 characters in length" do
-      expect(@purchase.create_confirmation_id.length).to be(18)
+      expect(@purchase.create_confirmation_id.length).to be(6)
     end
 
     it "creates a unique confirmation id" do
