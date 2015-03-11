@@ -1,12 +1,12 @@
 <h1>New Promotion</h1>
 <%= form_tag restaurant_promotions_path, method: :post, id: "new-promotion", class: "form-horizontal col-md-6" do %>
   <div class="form-group">
-    <label for="name">Name:</label>
+    <label for="name">Name</label><br>
     <input type="text" name="promotion[name]">
   </div>
   <div class="form-group">
-    <label for="name">Valid on:</label>
-    <input type="text" name="promotion[valid_on]" placeholder="DD/MM/YYYY">
+    <label for="name">Valid on</label></br>
+    <div class="w2ui-label"><input type="date" id="promo-date-picker" name="promotion[valid_on]" placeholder="DD/MM/YYYY"></div>
   </div>
   <div class="form-group">
     <label for="min_group_size">Set Min Group Size: </label>
