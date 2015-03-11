@@ -16,24 +16,6 @@ ActiveRecord::Schema.define(version: 20150311150439) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "owners", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "owners", ["email"], name: "index_owners_on_email", unique: true, using: :btree
-  add_index "owners", ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true, using: :btree
-
   create_table "promotions", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.string   "name"
@@ -72,7 +54,6 @@ ActiveRecord::Schema.define(version: 20150311150439) do
     t.datetime "updated_at",      null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "owner_id"
     t.string   "email"
     t.string   "password_digest"
   end
@@ -85,15 +66,6 @@ ActiveRecord::Schema.define(version: 20150311150439) do
     t.boolean  "active"
     t.float    "ticket_price"
     t.float    "loss_per_ticket"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "phone"
-    t.string   "email"
-    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

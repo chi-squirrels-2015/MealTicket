@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get "/closest_restaurants" => "restaurants#closest"
   get "/map" => "restaurants#map"
 
-  post "owners/sign_up" => "/dashboard"
 
   # post "/restaurants" => 'restaurants#create'
   # get "/restaurants" => 'restaurants#index'

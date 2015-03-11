@@ -26,10 +26,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # For rendering embedded javascript templates
 gem 'ejs'
 
-#bcrypt
+# Bcrypt
 gem 'bcrypt'
 
-#geocoding for restaurant locations
+# Geocoding for restaurant locations
 gem 'geocoder'
 
 # Stripe for payment processing
