@@ -9,6 +9,13 @@ class Customer
     @card = options[:card]
   end
 
+  def finalize_purchase(purchase, amount, promotion)
+    create_in_stripe!
+    charge!(amount, description: promotion)
+    purchase.confirm!
+    send_confirmation_message!(purchase)
+  end
+
   def create_in_stripe!
     @stripe_customer = Stripe::Customer.create(
       :email => self.email,
@@ -26,12 +33,13 @@ class Customer
   end
 
   def send_confirmation_message!(purchase)
+    # does this raise an exception? or mutate state? and if not, it shouldn't be a banger
+    # is there an option for refiring an unsent message?
     client.messages.create({
       from: FROM_PHONE_NUMBER,
       to:   purchase.phone_number,
       body: body(purchase)
     })
-    p client.messages
   end
 
   def client
@@ -42,7 +50,7 @@ class Customer
     <<-MSG
 Hey #{purchase.purchaser_name},
 
-Thanks for choosing MealTicket for #{purchase.ticket.promotion.restaurant.name} for a group of #{purchase.ticket.group_size}. Your confirmation number is: #{purchase.confirmation_id}.
+Thanks buying choosing MealTicket for #{purchase.ticket.promotion.restaurant.name} for a group of #{purchase.ticket.group_size}. Your confirmation number is: #{purchase.confirmation_id}.
 
 Enjoy your meal!
     MSG
