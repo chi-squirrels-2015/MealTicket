@@ -8,7 +8,8 @@
   <div class="view-tickets">
     <% @restaurant.promotions.not_expired.each do |promotion| %>
       <div class="view-tickets-promo-name">
-        <%= promotion.name %>
+        <%= promotion.name %><br>
+        <span class="valid-date">Valid on <%= promotion.valid_on.strftime("%B %d, %Y") %></span>
       </div>
       <div class="view-tickets-header">
         <span class="ticket-header-item-group">Group</span>
@@ -26,9 +27,6 @@
         </span>
         <span class="ticket-data-item">
           <%= number_to_percentage(ticket.discount * 100, precision: 2) %>
-        </span>
-        <span class="ticket-data-item">
-          <%= ticket.valid_on.strftime("%B %d, %Y") %>
         </span>
         <%= form_tag new_purchase_path, method: :get, class: "ticket-form ticket-data-item" do %>
             <input type="hidden" name="purchase[ticket_id]" value="<%= ticket.id %>">
