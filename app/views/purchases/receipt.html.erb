@@ -1,3 +1,3 @@
-<h2>Thanks, <%= @purchase.purchaser_name %>!</h2>
-<h3>You paid <strong><%= number_to_currency(@amount.to_f / 100) %></strong>.</h3>
-<h3>You'll be receiving a text message with your confirmation id for your reservation at <%= @purchase.phone_number %>.</h3>
+<h2>Thanks, <%= @view_model.purchaser_name %>!</h2>
+<h3>You paid <strong><%= number_to_currency(@view_model.amount.to_f / 100) %></strong>.</h3>
+<h3>You'll be receiving a text message with your confirmation id for your reservation at <%= @view_model.confirmation_id %>.</h3>
