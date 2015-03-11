@@ -14,5 +14,13 @@
         Select a pin to see great meal deals!
       </div>
     <% end %>
+    <% if owner_signed_in? %>
+      Logged in as <strong><%= current_owner.email %></strong>.
+      <%= link_to 'Edit profile', edit_owner_registration_path %> |
+      <%= link_to "Logout", destroy_owner_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_owner_registration_path %> |
+      <%= link_to "Login", new_owner_session_path %>
+    <% end %>
   </div>
 </nav>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   devise_for :owners
+
   get "/search" => "restaurants#search"
   get "/search_yelp" => 'restaurants#search_yelp'
 
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
       resources :promotions, only: [:index, :show]
   end
 
-  get "/dashboard" => "restaurants#dashboard", as: "dashboard_path"
+  get "/dashboard" => "restaurants#dashboard", as: "dashboard"
+
 
 end
