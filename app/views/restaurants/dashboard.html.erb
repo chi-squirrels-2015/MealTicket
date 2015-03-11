@@ -6,7 +6,7 @@
     </div>
 
     <div class="dashboard-new-promo-button">
-      <%= link_to "Create A New Promotion", new_restaurant_promotion_path(:restaurant_id => @restaurant.id), class: "btn btn-lg btn-primary" %>
+      <%= link_to "Create A New Promotion", new_restaurant_promotion_path(:restaurant_id => @restaurant.id), class: "dashboard-promo-btn btn btn-lg btn-primary" %>
     </div>
 
     <hr class="dashboard-hr"></hr>
@@ -14,35 +14,33 @@
 
   <br><br>
 
-  <div class="col-md-6 all-promos">
+  <div class="col-md-4 all-promos">
     <% @restaurant.promotions.each do |promotion| %>
       <div class="col-md-12 single-promo">
-        <div class="btn btn-primary btn-block">
-          <%= link_to promotion.name, promotion_tickets_path(promotion), class: "view-tickets-btn", id: promotion.id %>
+        <div class="view-tickets-btn-div btn btn-primary btn-block">
+          <%= link_to promotion.name, promotion_tickets_path(promotion), class: "view-tickets-btn" %>
         </div>
 
-        <!-- <div class="table-responsive"> -->
-          <table class="promo-table col-md-12">
-            <thead>
-              <th>Min Group</th>
-              <th>Max Group</th>
-              <th>Preferred Group</th>
-              <th>Loss Tolerance</th>
-            </thead>
-            <tbody>
-              <td><%= promotion.min_group_size %></td>
-              <td><%= promotion.max_group_size %></td>
-              <td><%= promotion.preferred_group_size %></td>
-              <td>$<%= promotion.loss_tolerance.round(2) %></td>
-              <!-- <td><%#= number_to_currency(promotion.loss_tolerance, locale: :en) %></td> -->
-            </tbody>
-          </table>
-        <!-- </div> -->
+        <table class="promo-table col-md-12">
+          <thead>
+            <th>Min Group</th>
+            <th>Max Group</th>
+            <th>Preferred Group</th>
+            <th>Loss Tolerance</th>
+          </thead>
+          <tbody>
+            <td><%= promotion.min_group_size %></td>
+            <td><%= promotion.max_group_size %></td>
+            <td><%= promotion.preferred_group_size %></td>
+            <td>$<%= promotion.loss_tolerance.round(2) %></td>
+            <!-- <td><%#= number_to_currency(promotion.loss_tolerance, locale: :en) %></td> -->
+          </tbody>
+        </table>
       </div>
     <% end %>
   </div>
 
-  <div class="col-md-6 ticket-div">
+  <div class="col-md-offset-1 col-md-7 ticket-div">
   </div>
 
 </div>
