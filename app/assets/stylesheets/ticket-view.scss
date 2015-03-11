@@ -3,6 +3,10 @@
   vertical-align: center;
 }
 
+.dashboard-promo-btn {
+  border: none;
+}
+
 .dashboard-new-promo-button {
   display: inline-block;
   margin-top: 20px;
@@ -56,8 +60,14 @@
   font-size: 16px;
 }
 
-.view-tickets-btn a {
+.view-tickets-btn {
+  /*background-color: #F07241;*/
   color: white;
+}
+
+.view-tickets-btn-div {
+  background-color: #F07241;
+  border: none;
 }
 
 .ticket-div {
