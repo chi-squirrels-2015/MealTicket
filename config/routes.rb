@@ -38,5 +38,7 @@ Rails.application.routes.draw do
 
   get "/dashboard" => "restaurants#dashboard", as: "dashboard"
 
+  # add route for tickets AJAX call in dashboard
+  get "/promotion_tickets/:id" => "promotions#promotion_tickets", as: "promotion_tickets"
 
 end
