@@ -17,8 +17,8 @@
   <div class="col-md-6 all-promos">
     <% @restaurant.promotions.each do |promotion| %>
       <div class="col-md-12 single-promo">
-        <div class="view-tickets-btn btn btn-primary btn-block">
-          <%= link_to promotion.name, class: "view-tickets-btn" %>
+        <div class="btn btn-primary btn-block">
+          <%= link_to promotion.name, promotion_tickets_path(promotion), class: "view-tickets-btn", id: promotion.id %>
         </div>
 
         <!-- <div class="table-responsive"> -->
@@ -42,7 +42,7 @@
     <% end %>
   </div>
 
-  <div class="col-md-6 ticket-div" style="display: none">
+  <div class="col-md-6 ticket-div">
   </div>
 
 </div>
