@@ -7,13 +7,13 @@
     <th>Purchaser Name</th>
   </thead>
   <tbody>
-    <% promotion.tickets.each do |ticket| %>
+    <% collection.models.forEach(function(result) { %>
     <tr>
-      <td><%= number_to_percentage(ticket.discount * 100, precision: 2) %></td>
-      <td><%= number_to_currency(ticket.min_total_spend.to_f, locale: :en) %></td>
-      <td><%= ticket.group_size %></td>
-      <td>Purchaser</td>
+      <td><%= result.discount * 100 %></td>
+      <td><%= result.min_total_spend %></td>
+      <td><%= result.group_size %></td>
+      <td><%= result.purchaser_name %></td>
     </tr>
-    <% end %>
+    <% }); %>
   </tbody>
 </table>

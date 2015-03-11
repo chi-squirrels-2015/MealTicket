@@ -1,4 +1,4 @@
-var PromotionTicket = Backbone.View.extend({
+var PromotionTicketsView = Backbone.View.extend({
   template: JST["templates/promotion_tickets"],
 
   render: function() {
