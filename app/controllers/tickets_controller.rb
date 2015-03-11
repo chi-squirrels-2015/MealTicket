@@ -4,6 +4,6 @@ class TicketsController < ApplicationController
   end
 
   def show
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.find(params[:id]).where(:ticket => {:active => true})
   end
 end

@@ -23,7 +23,7 @@ class PromotionsController < ApplicationController
   end
 
   def show
-    @promotion = Promotion.find(params[:id])
+    @promotion = Promotion.find(params[:id]).where(promotion.expired? == false)
     @promotion.restaurant = Restaurant.find(params[:restaurant_id])
   end
 
