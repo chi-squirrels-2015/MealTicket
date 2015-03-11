@@ -6,15 +6,16 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase = Purchase.new(purchase_params)
+    @ticket = Ticket.find_by(id: params[:purchase][:ticket_id])
 
-    @ticket = Ticket.find(params[:purchase][:ticket_id])
-    @promotion = @ticket.promotion
-    @amount = ((@ticket.ticket_price) * 100).to_i
+    @purchase.ticket = @ticket
 
-    if @purchase.ticket.active
-      if @purchase.ticket.promotion.available_budget < @ticket.loss_per_ticket
-        @purchase.ticket.update(active: false)
-        @purchase.errors.full_message
+    @promotion = @purchase.ticket.promotion
+    @amount = (@purchase.ticket.ticket_price * 100).to_i
+
+    if @ticket.active
+      if @promotion.available_budget < @ticket.loss_per_ticket
+        @ticket.deactivate!
       else
         customer = Customer.new({
           email: params[:purchase][:email],
@@ -23,8 +24,13 @@ class PurchasesController < ApplicationController
         customer.create_in_stripe!
         customer.charge!(@amount, description: @promotion)
         @purchase.confirm!
+        # sleep 0.1 # sometimes firing to fast?
         customer.send_confirmation_message!(@purchase)
+        render "purchases/receipt"
       end
+    else
+      flash[:error] = "Sorry, this MealTicket is no longer available for purchase."
+      redirect_to restaurant_path(@promotion.restaurant)
     end
 
     rescue Stripe::CardError => stripe_error
@@ -40,7 +46,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase).permit(:purchaser_name, :phone_number, :ticket_id, :email)
+    params.require(:purchase).permit(:purchaser_name, :phone_number, :email)
   end
 
 end

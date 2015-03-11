@@ -5,6 +5,7 @@ class Promotion < ActiveRecord::Base
   after_create :generate_tickets
 
   validates :name, presence: true
+  validates :valid_on, presence: true
   validates :min_group_size, presence: true
   validates :max_group_size, presence: true
   validates :preferred_group_size, presence: true
@@ -37,6 +38,10 @@ class Promotion < ActiveRecord::Base
   def update_tickets
     bogus_tickets = self.tickets.select {|t| available_budget < t.loss_per_ticket}
     bogus_tickets.map(&:deactivate!)
+  end
+
+  def expired?
+    self.valid_on >= Date.today
   end
 
   private

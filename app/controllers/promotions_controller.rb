@@ -36,6 +36,6 @@ class PromotionsController < ApplicationController
 
   def promotion_params
     puts params
-    params.require(:promotion).permit(:name, :restaurant_id, :min_group_size, :max_group_size, :preferred_group_size, :max_discount, :min_spend, :loss_tolerance)
+    params.require(:promotion).permit(:name, :valid_on, :restaurant_id, :min_group_size, :max_group_size, :preferred_group_size, :max_discount, :min_spend, :loss_tolerance)
   end
 end

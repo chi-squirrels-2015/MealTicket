@@ -6,19 +6,18 @@ $(document).ready(function() {
   $("#search").on("click", "a.result", function(e) {
     e.preventDefault();
     $("#search-results").hide();
-    
+
+    var options = {};
     var resultIndex = $(this).data("result-index");
     if(resultIndex !== undefined) {
-      var newRestaurantView = new NewRestaurantView({
-        model: yelpSearchView.collection.models[resultIndex]
-      });
+      options.model = yelpSearchView.collection.models[resultIndex];
     } else {
-      var newRestaurantView = new NewRestaurantView({
-        model: new Restaurant()
-      });
+      options.model = new Restaurant();
     }
 
+    var newRestaurantView = new NewRestaurantView(options);
     newRestaurantView.render();
+
     $("#search").append(newRestaurantView.el);
   });
 });
