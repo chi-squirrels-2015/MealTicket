@@ -7,7 +7,7 @@ class Purchase < ActiveRecord::Base
   after_create :check_current_tickets
 
   def create_confirmation_id
-    self.confirmation_id = SecureRandom.hex(n=9)
+    self.confirmation_id = SecureRandom.hex(n=3)
   end
 
   def check_current_tickets
