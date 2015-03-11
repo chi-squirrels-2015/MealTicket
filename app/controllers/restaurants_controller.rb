@@ -1,5 +1,7 @@
 class RestaurantsController < ApplicationController
 
+  skip_before_filter :verify_authenticity_token
+
   ####################
   #### ADMIN SIDE ####
   ####################
@@ -22,12 +24,15 @@ class RestaurantsController < ApplicationController
   end
 
   def create
+    puts restaurant_params
     @restaurant = Restaurant.create(restaurant_params)
+    @restaurant.owner_id = current_owner.id
+    @restaurant.save
     redirect_to dashboard_path
   end
 
   def dashboard
-    @restaurant = Restaurant.find(params[:user_id])
+    @restaurant = Restaurant.find_by_owner_id(current_owner.id)
   end
 
 
