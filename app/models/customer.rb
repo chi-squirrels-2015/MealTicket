@@ -50,7 +50,13 @@ class Customer
     <<-MSG
 Hey #{purchase.purchaser_name},
 
-Thanks buying choosing MealTicket for #{purchase.ticket.promotion.restaurant.name} for a group of #{purchase.ticket.group_size}. Your confirmation number is: #{purchase.confirmation_id}.
+Thanks for choosing MealTicket to dine at #{purchase.ticket.promotion.restaurant.name}. Please present this to the restaurant upon your arrival.
+
+Valid Date: #{purchase.ticket.promotion.valid_on}
+Group size: #{purchase.ticket.group_size}
+Confirmation code: #{purchase.confirmation_id}
+Discount: #{'%.2f' % (purchase.ticket.discount * 100)}%
+Purchase Price: $#{'%.2f' % purchase.ticket.ticket_price}
 
 Enjoy your meal!
     MSG
