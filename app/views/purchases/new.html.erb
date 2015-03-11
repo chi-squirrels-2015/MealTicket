@@ -9,7 +9,7 @@
     <div class="stripe-purchase-form">
       <div class="payment-errors"></div>
 
-      <input class="form-control" type="hidden" name="purchase[ticket_id]" value="<%= @ticket.id %>">
+      <input class="form-control" type="hidden" name="purchase[ticket_id]" value="<%= @view_model.ticket.id %>">
 
       <div class="purchase-form-group">
         <label for="purchaser_name">Purchaser Name</label>
