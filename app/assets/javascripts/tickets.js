@@ -1,8 +1,16 @@
-// $(document).ready(function(){
-//   $(".btn").on("click", function() {
-//     $(this).next().toggle();
-//   });
-// });
+$(document).ready(function(){
+  $(".view-tickets-btn").on("click", function(event) {
+    event.preventDefault();
 
-// <%#= render :partial =>  "promotions/ticket", locals: {promotion: promotion} %>
+    var request = $.ajax({
+      url: $(this).attr('href'),
+      method: "GET"
+    })
 
+    request.done(function(response) {
+      $(".ticket-div").empty();
+      $(".ticket-div").append(response)
+    })
+
+  });
+});
