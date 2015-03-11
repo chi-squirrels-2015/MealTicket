@@ -25,7 +25,6 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    require 'pry'; binding.pry
     if @restaurant.save
       session[:restaurant_id] = @restaurant.id
       redirect_to dashboard_path

@@ -6,11 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    require 'pry'; binding.pry
     @restaurant = Restaurant.find_by_name(params[:name]).try(:authenticate, params[:password])
     if @restaurant
-      p 'SETTING SESSION'
-      p @restaurant.id
       session[:restaurant_id] = @restaurant.id
       redirect_to dashboard_path
     else
