@@ -1,5 +1,18 @@
-<%= form_tag(login_path, method: :post) do %>
-  Email: <%= text_field_tag :email %><br />
-  Password: <%= password_field_tag :password %><br />
-  <%= submit_tag "Login" %>
-<% end %>
+<h3 class="login-header">Already have an account?</h3>
+<div class="login-form">
+  <%= form_tag(login_path, method: :post) do %>
+    <div class="form-group">
+      <label for="email">Email:</label><br>
+      <input type="text" name="email" id="email" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label><br>
+      <input type="password" name="password" id="password" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <input type="submit" value="Login" class="btn login-submit">
+    </div>
+  <% end %>
+</div>
