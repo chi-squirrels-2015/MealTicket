@@ -1,5 +1,5 @@
 .dashboard-restaurant-data {
-  display: inline-block;
+  display: block;
   vertical-align: center;
 }
 
@@ -7,19 +7,12 @@
   color: #1FA5BF;
 }
 
-.dashboard-promo-btn {
-  border: none;
-  margin-top: inherit;
-  background-color: #1FA5BF;
-  border: none;
-}
-
 .dashboard-new-promo-button {
+  background-color: #1FA5BF;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-right: 10px;
-  float: right;
-  vertical-align: center;
+  color: white;
 }
 
 .dashboard-hr {
@@ -33,7 +26,6 @@
 }
 
 .promo-table {
-  /*border: 1px solid green;*/
   margin-bottom: 30px;;
 }
 
@@ -108,26 +100,3 @@ input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-
-
-/*.restaurant-name {
-    text-align: center;
-}
-
-.promo-name {
-    display: inline;
-}
-
-.promo-percent {
-    width: 20%;
-    float: right;
-}
-
-.label-primary {
-    font-size: 1.5em;
-}
-
-.ticket-row-height {
-  line-height: 5em;
-}*/

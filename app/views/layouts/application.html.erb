@@ -16,11 +16,12 @@
   <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
   <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css' rel='stylesheet' />
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 </head>
 
 <body>
   <%= render "navigation/topnav" %>
-  <div class="admin-background-container">
+  <div class="wrapper">
     <div class="container">
       <div class="flash-error">
         <%=flash[:error]%>
@@ -28,7 +29,6 @@
       <%= yield %>
     </div>
   </div>
-
-
+<footer class="text-center">MealTicket &copy; 2015</footer>
 </body>
 </html>

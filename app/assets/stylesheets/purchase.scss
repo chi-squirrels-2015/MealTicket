@@ -1,11 +1,18 @@
 .stripe-purchase-form {
   margin-top: 10px;
+  height: 50%;
 }
 
 .purchase-form-group {
   margin-bottom: 12px;
 }
 
-.stripe-purchase-form {
-  height: 50%;
+.stripe-purchase-btn {
+  margin: 7px 0;
+  background-color: #F07241;
+  border: none;
+  color: white;
+  &:hover {
+    background-color: #C04848;
+  }
 }

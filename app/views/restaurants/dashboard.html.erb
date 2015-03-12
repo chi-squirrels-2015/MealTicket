@@ -1,67 +1,66 @@
 <div class="container">
-  <h1><%= current_restaurant.name %></h1>
-  <h4>Welcome to MealTicket! Check out existing promotions and create new ones.</h4>
-  <%= link_to "New Promotion", new_promotion_path, class: "btn btn-primary" %>
-  <% current_restaurant.promotions.not_expired.each do |promotion| %>
-    <div class="col-md-4">
-      <div class="btn btn-lg btn-primary btn-block">
-        <%= promotion.name %>
-      </div>
-      <%= render :partial =>  "promotions/ticket", locals: {promotion: promotion} %>
+  <div class="row">
+    <div class="dashboard-restaurant-data col-md-9">
+      <h1><%= current_restaurant.name %></h1>
+      <h4>Welcome to MealTicket! Check out existing promotions and create new ones.</h4>
+    </div>
+    <div class="col-md-3">
+      <%= link_to "New Promotion", new_promotion_path, class: "btn-lg dashboard-new-promo-button" %>
+    </div>
+  </div>
+  <hr class="dashboard-hr"/>
   <div class="col-md-4 all-promos">
     <h3 class="promo-header">Current Promotions</h3>
     <% current_restaurant.active_unexpired_promotions.each do |promotion| %>
-      <div class="col-md-12 single-promo">
-        <div class="view-tickets-btn-div btn btn-primary btn-block">
-          <%= link_to promotion.name, promotion_tickets_path(promotion), class: "view-tickets-btn" %>
-        </div>
-
-        <table class="promo-table col-md-12">
-          <thead>
-            <th>Min Group</th>
-            <th>Max Group</th>
-            <th>Preferred Group</th>
-            <th>Loss Tolerance</th>
-          </thead>
-          <tbody>
-            <td><%= promotion.min_group_size %></td>
-            <td><%= promotion.max_group_size %></td>
-            <td><%= promotion.preferred_group_size %></td>
-            <td>$<%= promotion.loss_tolerance.round(2) %></td>
-            <!-- <td><%#= number_to_currency(promotion.loss_tolerance, locale: :en) %></td> -->
-          </tbody>
-        </table>
+    <div class="col-md-12 single-promo">
+      <div class="view-tickets-btn-div btn btn-primary btn-block">
+        <%= link_to promotion.name, promotion_tickets_path(promotion), class: "view-tickets-btn" %>
       </div>
+
+      <table class="promo-table col-md-12">
+        <thead>
+          <th>Min Group</th>
+          <th>Max Group</th>
+          <th>Preferred Group</th>
+          <th>Loss Tolerance</th>
+        </thead>
+        <tbody>
+          <td><%= promotion.min_group_size %></td>
+          <td><%= promotion.max_group_size %></td>
+          <td><%= promotion.preferred_group_size %></td>
+          <td><%= number_to_currency(promotion.loss_tolerance, locale: :en) %></td>
+        </tbody>
+      </table>
+    </div>
     <% end %>
 
     <h3 class="promo-header">Expired Promotions</h3>
     <% current_restaurant.expired_promotions.each do |promotion| %>
-      <div class="col-md-12 single-promo">
-        <%# if promotion.expired? %>
-        <div class="view-tickets-btn-div btn btn-primary btn-block">
-          <%= link_to promotion.name, promotion_tickets_path(promotion), class: "view-tickets-btn" %>
-        </div>
-
-        <table class="promo-table col-md-12">
-          <thead>
-            <th>Min Group</th>
-            <th>Max Group</th>
-            <th>Preferred Group</th>
-            <th>Loss Tolerance</th>
-          </thead>
-          <tbody>
-            <td><%= promotion.min_group_size %></td>
-            <td><%= promotion.max_group_size %></td>
-            <td><%= promotion.preferred_group_size %></td>
-            <td>$<%= promotion.loss_tolerance.round(2) %></td>
-            <!-- <td><%#= number_to_currency(promotion.loss_tolerance, locale: :en) %></td> -->
-          </tbody>
-        </table>
+    <div class="col-md-12 single-promo">
+      <%# if promotion.expired? %>
+      <div class="view-tickets-btn-div btn btn-primary btn-block">
+        <%= link_to promotion.name, promotion_tickets_path(promotion), class: "view-tickets-btn" %>
       </div>
 
+      <table class="promo-table col-md-12">
+        <thead>
+          <th>Min Group</th>
+          <th>Max Group</th>
+          <th>Preferred Group</th>
+          <th>Loss Tolerance</th>
+        </thead>
+        <tbody>
+          <td><%= promotion.min_group_size %></td>
+          <td><%= promotion.max_group_size %></td>
+          <td><%= promotion.preferred_group_size %></td>
+          <td>$<%= promotion.loss_tolerance.round(2) %></td>
+          <!-- <td><%#= number_to_currency(promotion.loss_tolerance, locale: :en) %></td> -->
+        </tbody>
+      </table>
     </div>
   <% end %>
-  <% end %>
 </div>
+  <div class="col-md-6 col-md-offset-1 ticket-div"></div>
+  </div>
 
-<%= javascript_include_tag "tickets.js" %>
+  <%= javascript_include_tag "tickets.js" %>
