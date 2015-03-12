@@ -28,7 +28,9 @@ class Restaurant < ActiveRecord::Base
           id: self.id,
           name: self.name,
           address: self.address,
-          yelp_id: self.yelp_id
+          yelp_id: self.yelp_id,
+          active_promotions: self.promotions.where(active: true).count
+          # max_discount: (self.promotions.max(:max_discount) * 100).to_i
         }
       }]
     }
