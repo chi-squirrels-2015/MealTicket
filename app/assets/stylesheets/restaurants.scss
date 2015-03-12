@@ -1,3 +1,25 @@
+/*** YELP SEARCH and NEW RESTAURANT ***/
+
+.yelp-search-div {
+  margin-top: 30px;
+  width: 60%;
+}
+
+.yelp-search-submit {
+  margin: 7px 0;
+  width: 150px;
+  background-color: #F07241;
+  border: none;
+  color: white;
+  &:hover {
+    background-color: #C04848;
+  }
+}
+
+
+
+/*** RESTAURANTS SHOW and TICKETS PAGE ***/
+
 .view-tickets {
   border: none;
   margin-top: 30px;
