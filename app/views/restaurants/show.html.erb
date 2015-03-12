@@ -6,7 +6,7 @@
 
 
   <div class="view-tickets">
-    <% @restaurant.promotions.each do |promotion| %>
+    <% @restaurant.promotions.not_expired.each do |promotion| %>
       <div class="view-tickets-promo-name">
         <%= promotion.name %>
       </div>

@@ -1,7 +1,7 @@
 class PromotionsController < ApplicationController
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @promotions = @restaurant.promotions
+    @promotions = @restaurant.promotions  
   end
 
   def new
@@ -15,7 +15,7 @@ class PromotionsController < ApplicationController
     @promotion = @restaurant.promotions.build(promo)
 
     if @promotion.save
-      redirect_to restaurant_path(@restaurant)
+      redirect_to dashboard_path
     else
       @errors = @promotion.errors
       render :new

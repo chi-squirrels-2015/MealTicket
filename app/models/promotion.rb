@@ -17,6 +17,9 @@ class Promotion < ActiveRecord::Base
 
   before_validation :set_available_budget, on: :create
 
+  scope :not_expired, -> {where("valid_on >= '#{Date.today}'")}
+
+
   def self.minimum_discount
     0.10
   end

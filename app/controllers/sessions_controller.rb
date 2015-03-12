@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     @restaurant = Restaurant.find_by_name(params[:name]).try(:authenticate, params[:password])
+  
     if @restaurant
       session[:restaurant_id] = @restaurant.id
       redirect_to dashboard_path
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:restaurant_id)
-    redirect_to signup_path
+    redirect_to root_path
   end
 
 end

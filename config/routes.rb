@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get "/closest_restaurants" => "restaurants#closest"
   get "/map" => "restaurants#map"
 
-
   # post "/restaurants" => 'restaurants#create'
   # get "/restaurants" => 'restaurants#index'
 
@@ -37,6 +36,10 @@ Rails.application.routes.draw do
 
   # add route for tickets AJAX call in dashboard
   get "/promotion_tickets/:id" => "promotions#promotion_tickets", as: "promotion_tickets"
+
+  get "/login" => 'sessions#new'
+  post "/login" => 'sessions#create'
+  get "/logout" => 'sessions#destroy'
 
   get "/login" => 'sessions#new'
   post "/login" => 'sessions#create'
