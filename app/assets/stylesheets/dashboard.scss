@@ -13,6 +13,14 @@
   margin-top: 50px;
   margin-right: 10px;
   color: white;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  };
+  &:visited {
+    color: white;
+    text-decoration: none;
+  };
 }
 
 .dashboard-hr {
