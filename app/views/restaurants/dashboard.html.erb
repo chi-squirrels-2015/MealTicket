@@ -9,9 +9,8 @@
       <%= render :partial =>  "promotions/ticket", locals: {promotion: promotion} %>
   <div class="col-md-4 all-promos">
     <h3 class="promo-header">Current Promotions</h3>
-    <% @restaurant.promotions.each do |promotion| %>
+    <% current_restaurant.promotions.each do |promotion| %>
       <div class="col-md-12 single-promo">
-        <%# if promotion.expired? %>
         <div class="view-tickets-btn-div btn btn-primary btn-block">
           <%= link_to promotion.name, promotion_tickets_path(promotion), class: "view-tickets-btn" %>
         </div>
@@ -35,7 +34,7 @@
     <% end %>
 
     <h3 class="promo-header">Expired Promotions</h3>
-    <% @restaurant.promotions.each do |promotion| %>
+    <% current_restaurant.promotions.each do |promotion| %>
       <div class="col-md-12 single-promo">
         <%# if promotion.expired? %>
         <div class="view-tickets-btn-div btn btn-primary btn-block">
@@ -66,8 +65,7 @@
         <%= link_to "New Promotion", new_restaurant_promotion_path(:restaurant_id => current_restaurant.id) %>
       </div>
     </div>
-
-
+  <% end %>
 </div>
 
 <%= javascript_include_tag "tickets.js" %>
