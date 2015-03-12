@@ -38,13 +38,14 @@ $(document).ready(function(){
           content = e.layer.feature.properties;
 
       var markerColor = "#999999",
-          popup       = '<p>' + content.name + '<br /><img src="' + content.rating_url + '"/><br />' + content.review_count + ' reviews</p>' + '<p>' + content.address + '</p><p>No MealTicket at this time.</p>';
+          button = '<button class="btn btn-disabled">No MealTickets</button>';
 
       if(feature.properties.active_promotions > 0) {
         markerColor = "#F07241";
-        popup   = '<p>' + content.name + '<br /><img src="' + content.rating_url + '"/><br />' + content.review_count + ' reviews</p>' + '<p>' + content.address + '</p>' + '<a class="btn btn-promotions" href="/restaurants/' + content.id + '">' + content.active_promotions + ' Promotions</a>';
+        button = '<a class="btn btn-promotions" href="/restaurants/' + content.id + '">Save up to ' + content.max_discount + '%</a>';
       }
 
+      var popup = '<p>' + content.name + '<br /><img src="' + content.rating_url + '"/><br />' + content.review_count + ' reviews</p>' + '<p>' + content.address + '</p><p class="text-center">' + button + '</p>';
       marker.setIcon(L.mapbox.marker.icon({
           'marker-color': markerColor,
       }));
