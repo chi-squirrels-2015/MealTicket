@@ -10,9 +10,36 @@
 @import "map";
 @import "promotion";
 
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%
+}
+
 body {
   font-family: 'Lato';
   font-weight: 400;
   background-image: url("cream_pixels.png");
   background-repeat: repeat;
+  margin-bottom: 100px;
+}
+
+.wrapper:after {
+  content: "";
+  display: block;
+}
+
+footer, .wrapper:after {
+}
+
+footer {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  height: 50px;
+  background: #333333;
+  color: white;
 }
