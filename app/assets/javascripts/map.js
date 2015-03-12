@@ -34,14 +34,20 @@ $(document).ready(function(){
 
     markerLayer.on('layeradd', function(e){
       var marker  = e.layer,
-          feature = marker.feature;
+          feature = marker.feature,
+          content = e.layer.feature.properties;
+
+      var markerColor = "#999999",
+          popup       = '<p>' + content.name + '<br /><img src="' + content.rating_url + '"/><br />' + content.review_count + ' reviews</p>' + '<p>' + content.address + '</p><p>No MealTicket at this time.</p>';
+
+      if(feature.properties.active_promotions > 0) {
+        markerColor = "#F07241";
+        popup   = '<p>' + content.name + '<br /><img src="' + content.rating_url + '"/><br />' + content.review_count + ' reviews</p>' + '<p>' + content.address + '</p>' + '<a class="btn btn-promotions" href="/restaurants/' + content.id + '">' + content.active_promotions + ' Promotions</a>';
+      }
 
       marker.setIcon(L.mapbox.marker.icon({
-          'marker-color': '#F07241',
+          'marker-color': markerColor,
       }));
-
-      var content = e.layer.feature.properties,
-          popup   = '<p>' + content.name + '\t<img src="' + content.rating_url + '"/> ' + content.review_count + ' reviews</p>' + '<p>' + content.address + '</p>' + '<a class="btn btn-promotions" href="/restaurants/' + content.id + '">View MealTickets</a>';
 
       marker.bindPopup(popup);
     });
