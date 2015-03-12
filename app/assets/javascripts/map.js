@@ -34,10 +34,21 @@ $(document).ready(function(){
 
     markerLayer.on('layeradd', function(e){
       var marker  = e.layer,
-          feature = marker.feature;
+          feature = marker.feature,
+          content = e.layer.feature.properties;
 
-      var content = e.layer.feature.properties,
-          popup   = '<p>' + content.name + '\t<img src="' + content.rating_url + '"/> ' + content.review_count + ' reviews</p>' + '<p>' + content.address + '</p>' + '<a class="btn btn-promotions" href="/restaurants/' + content.id + '">View MealTickets</a>';
+      var markerColor = "#999999",
+          button = '<button class="btn btn-disabled">No MealTickets</button>';
+
+      if(feature.properties.active_promotions > 0) {
+        markerColor = "#F07241";
+        button = '<a class="btn btn-promotions" href="/restaurants/' + content.id + '">Save up to ' + content.max_discount + '%</a>';
+      }
+
+      var popup = '<p>' + content.name + '<br /><img src="' + content.rating_url + '"/><br />' + content.review_count + ' reviews</p>' + '<p>' + content.address + '</p><p class="text-center">' + button + '</p>';
+      marker.setIcon(L.mapbox.marker.icon({
+          'marker-color': markerColor,
+      }));
 
       marker.bindPopup(popup);
     });

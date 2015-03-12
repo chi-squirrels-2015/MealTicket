@@ -6,14 +6,6 @@ class RestaurantsController < ApplicationController
   #### ADMIN SIDE ####
   ####################
 
-  def index
-    @restaurants = Restaurant.all
-    render json: @restaurants
-  end
-
-  def search
-  end
-
   def search_yelp
     parameters = { sort: "0", term: params["business-name"], limit: 3, category_filter: "restaurants,bars" }
     render json: Yelp.client.search(params["location"], parameters).businesses
@@ -50,8 +42,7 @@ class RestaurantsController < ApplicationController
   end
 
   def closest
-    closest = Restaurant.near([params[:lat], params[:lng]], 2).joins(:promotions).where("valid_on >= '#{Date.today}'").where(:promotions => {:active => true})
-    geojson = closest.map(&:to_geoJSON)
+    geojson = Restaurant.near([params[:lat], params[:lng]], 2).map(&:to_geoJSON)
 
     geojson.each do |restaurant|
       yelp = Yelp.client.business(restaurant[:features][0][:properties][:yelp_id])
