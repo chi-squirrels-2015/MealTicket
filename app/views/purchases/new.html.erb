@@ -18,17 +18,17 @@
 
       <div class="purchase-form-group">
         <label for="phone_number">Phone Number</label>
-        <input class="form-control" id="phone_number" type="text" name="purchase[phone_number]" placeholder="213-333-4444"/>
+        <input class="form-control" id="phone_number" type="tel" name="purchase[phone_number]" />
       </div>
 
       <div class="purchase-form-group">
         <label for="phone_number">Email</label>
-        <input class="form-control" id="phone_number" type="text" name="purchase[email]" placeholder="me@example.com"/>
+        <input class="form-control" id="phone_number" type="email" name="purchase[email]" placeholder="me@example.com"/>
       </div>
 
       <div class="purchase-form-group">
         <label for="card-number">Card Number</label>
-        <input class="form-control" id="card-number" type="text" data-stripe="number" placeholder="4321 4321 4321 4321"/>
+        <input class="form-control" id="card-number" type="number" data-stripe="number" placeholder="4321 4321 4321 4321"/>
       </div>
 
       <div class="purchase-form-group">
@@ -73,11 +73,11 @@
 
       <div class="purchase-form-group">
         <label for="card-cvc">CVC</label>
-        <input class="form-control" id="card-cvc" type="text" data-stripe="cvc" />
+        <input class="form-control" id="card-cvc" type="number" data-stripe="cvc" />
       </div>
 
       <div class="purchase-form-group">
-        <input type="submit" class="btn btn-primary" value="Purchase Ticket">
+        <input type="submit" class="btn stripe-purchase-btn" value="Purchase Ticket">
       </div>
 
     </div>
