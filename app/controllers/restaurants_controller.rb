@@ -28,7 +28,7 @@ class RestaurantsController < ApplicationController
 
   def dashboard
     unless current_restaurant
-      redirect_to root_path
+      redirect_to login_path
     end
   end
 
