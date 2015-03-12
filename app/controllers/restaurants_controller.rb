@@ -50,8 +50,7 @@ class RestaurantsController < ApplicationController
   end
 
   def closest
-    closest = Restaurant.near([params[:lat], params[:lng]], 2).joins(:promotions).where("valid_on >= '#{Date.today}'")
-    geojson = closest.map(&:to_geoJSON)
+    geojson = Restaurant.near([params[:lat], params[:lng]], 2).map(&:to_geoJSON)
 
     geojson.each do |restaurant|
       yelp = Yelp.client.business(restaurant[:features][0][:properties][:yelp_id])
