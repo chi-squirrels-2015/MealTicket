@@ -36,6 +36,10 @@ $(document).ready(function(){
       var marker  = e.layer,
           feature = marker.feature;
 
+      marker.setIcon(L.mapbox.marker.icon({
+          'marker-color': '#F07241',
+      }));
+
       var content = e.layer.feature.properties,
           popup   = '<p>' + content.name + '\t<img src="' + content.rating_url + '"/> ' + content.review_count + ' reviews</p>' + '<p>' + content.address + '</p>' + '<a class="btn btn-promotions" href="/restaurants/' + content.id + '">View MealTickets</a>';
 
