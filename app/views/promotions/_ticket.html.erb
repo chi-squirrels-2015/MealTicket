@@ -1,7 +1,36 @@
+<h2><%= promotion.name %></h2>
+<h5>Valid on: <%= promotion.valid_on.strftime("%B %d, %Y") %></h5>
+<h5>Remaining budget: <%= number_to_currency(promotion.available_budget.to_f, locale: :en) %></h5>
 <div class="table-responsive">
   <table class="table ticket-partial-table">
-    <h4>Ticket Details for <%= promotion.name %></h4>
-    <caption>Valid on <%= promotion.valid_on.strftime("%B %d, %Y") %></caption>
+    <h4>Purchases</h4>
+    <thead>
+      <th>Confirmation Code</th>
+      <th>Purchaser Name</th>
+      <th>Group Size</th>
+      <th>Min Total Spend</th>
+    </thead>
+    <tbody>
+      <% if purchases.empty? %>
+        <td></td>
+        <td>No purchases yet.</td>
+        <td></td>
+        <td></td>
+      <% end %>
+      <% purchases.each do |purchase| %>
+      <tr>
+        <td><%= purchase.confirmation_id %></td>
+        <td><%= purchase.purchaser_name %></td>
+        <td><%= purchase.ticket.group_size %></td>
+        <td><%= number_to_currency(purchase.ticket.min_total_spend.to_f, locale: :en) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="table-responsive">
+  <table class="table ticket-partial-table">
+    <h4>Tickets Generated</h4>
     <thead>
       <th>Discount</th>
       <th>Min Total Spend</th>

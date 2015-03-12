@@ -35,7 +35,8 @@ class PromotionsController < ApplicationController
 
   def promotion_tickets
     @promotion = Promotion.find(params[:id])
-    render :partial =>  "promotions/ticket", locals: {promotion: @promotion}
+    @purchases = @promotion.purchases
+    render :partial =>  "promotions/ticket", locals: {promotion: @promotion, purchases: @purchases}
   end
 
   def promotion_params

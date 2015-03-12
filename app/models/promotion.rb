@@ -1,5 +1,6 @@
 class Promotion < ActiveRecord::Base
   has_many :tickets
+  has_many :purchases, through: :tickets
   belongs_to :restaurant
 
   after_create :generate_tickets
