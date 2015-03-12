@@ -10,14 +10,6 @@
 @import "map";
 @import "promotion";
 
-* {
-  margin: 0;
-}
-
-html, body {
-  height: 100%
-}
-
 body {
   font-family: 'Lato';
   font-weight: 400;
@@ -26,12 +18,8 @@ body {
   margin-bottom: 100px;
 }
 
-.wrapper:after {
-  content: "";
-  display: block;
-}
-
-footer, .wrapper:after {
+.wrapper {
+  padding-top: 105px;
 }
 
 footer {
@@ -39,7 +27,8 @@ footer {
   left: 0;
   bottom: 0;
   position: fixed;
-  height: 50px;
+  height: 40px;
   background: #333333;
-  color: white;
+  color: #bbbbbb;
+  padding: 10px;
 }

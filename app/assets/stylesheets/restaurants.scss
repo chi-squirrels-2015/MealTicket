@@ -55,6 +55,10 @@
   width: 75px;
   background-color: #F07241;
   border: none;
+  color: white;
+  &:hover {
+    background-color: #C04848;
+  }
 }
 
 .restaurant-show-details {
