@@ -1,0 +1,19 @@
+.login-header {
+  margin-top: 30px;
+}
+
+.login-form {
+  width: 35%;
+  margin-top: 30px;
+}
+
+.login-submit {
+  margin: 7px 0;
+  width: 75px;
+  background-color: #F07241;
+  border: none;
+  color: white;
+  &:hover {
+    background-color: #C04848;
+  }
+}

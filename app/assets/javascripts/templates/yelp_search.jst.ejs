@@ -1,15 +1,17 @@
-<form id="yelp-search" method="get" action="/search_yelp">
-  <div class="form-group row">
-    <label for="business-name" class="col-md-2 control-label">Name of your business:</label>
-    <div class="col-md-6">
-      <input type="text" id="business-name" name="business-name" />
+<div class="yelp-search-div">
+  <form id="yelp-search" method="get" action="/search_yelp">
+    <div class="form-group row">
+      <label for="business-name" class="col-md-4 control-label" class="form-control"><h4>Name of your business</h4></label>
+      <div class="col-md-6">
+        <input type="text" id="business-name" name="business-name" class="form-control"/>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="location" class="col-md-2 control-label">Your city or zip code:</label>
-    <div class="col-md-6">
-      <input type="text" id="location" name="location" />
+    <div class="form-group row">
+      <label for="location" class="col-md-4 control-label" class="form-control"><h4>Your city or zip code</h4></label>
+      <div class="col-md-6">
+        <input type="text" id="location" name="location" class="form-control"/>
+      </div>
     </div>
-  </div>
-  <button class="btn btn-primary">Find Your Business</button>
-</form>
+    <button class="btn yelp-search-submit">Find Your Business</button>
+  </form>
+</div>
