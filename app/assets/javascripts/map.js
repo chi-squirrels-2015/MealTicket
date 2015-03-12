@@ -33,14 +33,13 @@ $(document).ready(function(){
       .addTo(map);
 
     markerLayer.on('layeradd', function(e){
-      var marker = e.layer,
+      var marker  = e.layer,
           feature = marker.feature;
 
-      var content = e.layer.feature.properties
-      var content = '<p>' + content.name + '</p>' + '<p>' + content.address + '</p>' + '<form action="/restaurants/' + content.id + '"><input type="submit" value="View Promotions"></form>'
+      var content = e.layer.feature.properties,
+          popup   = '<p>' + content.name + '\t<img src="' + content.rating_url + '"/> ' + content.review_count + ' reviews</p>' + '<p>' + content.address + '</p>' + '<a class="btn btn-promotions" href="/restaurants/' + content.id + '">View MealTickets</a>';
 
-      marker.bindPopup(content);
-
+      marker.bindPopup(popup);
     });
 
   }

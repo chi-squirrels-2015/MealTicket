@@ -1,7 +1,7 @@
 class Restaurant < ActiveRecord::Base
   has_secure_password
   has_many :promotions
-  
+
   validates :yelp_id, uniqueness: true
   validates :name, presence: true
   validates :display_phone, presence: true
@@ -27,8 +27,8 @@ class Restaurant < ActiveRecord::Base
         properties: {
           id: self.id,
           name: self.name,
-          address: self.address
-
+          address: self.address,
+          yelp_id: self.yelp_id
         }
       }]
     }
