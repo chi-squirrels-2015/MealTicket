@@ -1,5 +1,6 @@
 class Restaurant < ActiveRecord::Base
   has_secure_password
+  has_many :active_unexpired_promotions, -> { where(active: true).where("valid_on >= '#{Date.today}'") }, class_name: "Promotion"
   has_many :promotions
 
   validates :yelp_id, uniqueness: true
@@ -29,8 +30,8 @@ class Restaurant < ActiveRecord::Base
           name: self.name,
           address: self.address,
           yelp_id: self.yelp_id,
-          active_promotions: self.promotions.where(active: true).count
-          # max_discount: (self.promotions.max(:max_discount) * 100).to_i
+          active_promotions: self.active_unexpired_promotions.count,
+          max_discount: ((self.active_unexpired_promotions.max_by(&:max_discount).try(:max_discount) || 0) * 100).to_i
         }
       }]
     }
