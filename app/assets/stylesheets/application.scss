@@ -2,13 +2,17 @@
 @import "bootstrap";
 
 @import "navbar";
-@import "ticket-view";
+@import "dashboard";
 
 @import "restaurants";
 @import "purchase";
+@import "ticket";
 @import "map";
+@import "promotion";
 
 body {
   font-family: 'Lato';
   font-weight: 400;
+  background-image: url("cream_pixels.png");
+  background-repeat: repeat;
 }

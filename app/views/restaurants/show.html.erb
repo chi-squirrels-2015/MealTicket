@@ -8,7 +8,8 @@
   <div class="view-tickets">
     <% @restaurant.promotions.not_expired.each do |promotion| %>
       <div class="view-tickets-promo-name">
-        <%= promotion.name %>
+        <%= promotion.name %><br>
+        <span class="valid-date">Valid on <%= promotion.valid_on.strftime("%B %d, %Y") %></span>
       </div>
       <div class="view-tickets-header">
         <span class="ticket-header-item-group">Group</span>

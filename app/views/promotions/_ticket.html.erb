@@ -1,11 +1,11 @@
 <div class="table-responsive">
-  <table class="table">
-    <caption>Ticket Details</caption>
+  <table class="table ticket-partial-table">
+    <h4>Ticket Details for <%= promotion.name %></h4>
+    <caption>Valid on <%= promotion.valid_on.strftime("%B %d, %Y") %></caption>
     <thead>
       <th>Discount</th>
       <th>Min Total Spend</th>
       <th>Group Size</th>
-      <th>Purchaser Name</th>
     </thead>
     <tbody>
       <% promotion.tickets.each do |ticket| %>
@@ -13,7 +13,6 @@
         <td><%= number_to_percentage(ticket.discount * 100, precision: 2) %></td>
         <td><%= number_to_currency(ticket.min_total_spend.to_f, locale: :en) %></td>
         <td><%= ticket.group_size %></td>
-        <td>Purchaser</td>
       </tr>
       <% end %>
     </tbody>

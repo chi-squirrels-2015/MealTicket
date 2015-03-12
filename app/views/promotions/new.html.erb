@@ -1,43 +1,43 @@
 <h1>New Promotion</h1>
-<%= form_tag restaurant_promotions_path, method: :post, id: "new-promotion", class: "form-horizontal col-md-6" do %>
+<%= form_tag restaurant_promotions_path, method: :post, id: "new-promotion", class: "form-horizontal col-md-5" do %>
   <div class="form-group">
-    <label for="name">Name:</label>
+    <label for="name">Name</label><br>
     <input type="text" name="promotion[name]">
   </div>
   <div class="form-group">
-    <label for="name">Valid on:</label>
-    <input type="text" name="promotion[valid_on]" placeholder="DD/MM/YYYY">
+    <label for="name">Valid on</label></br>
+    <div class="w2ui-label"><input type="date" id="promo-date-picker" name="promotion[valid_on]" placeholder="DD/MM/YYYY"></div>
   </div>
   <div class="form-group">
     <label for="min_group_size">Set Min Group Size: </label>
-    <input type="text" id="min_group_size" name="promotion[min_group_size]" readonly style="border:0; color:#f6931f; font-weight:bold; width: 50px;">
+    <input type="text" class="inherit-input" id="min_group_size" name="promotion[min_group_size]" readonly style="border:0; color:#f6931f; font-weight:bold; width: 50px;">
 
     <label for="max_group_size">Set Max Group Size: </label>
-    <input type="text" id="max_group_size" name="promotion[max_group_size]" readonly style="border:0; color:#f6931f; font-weight:bold; width: 50px;">
+    <input type="text" class="inherit-input" id="max_group_size" name="promotion[max_group_size]" readonly style="border:0; color:#f6931f; font-weight:bold; width: 50px;">
     <div id="group_size_slider" style="width:250px; color: #f6931f"></div>
   </div>
   <div class="form-group">
     <label for="preferred_group_size">Preferred Group Size</label>
-    <input type="text" id="preferred_group_size" name="promotion[preferred_group_size]" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    <input type="text" class="inherit-input" id="preferred_group_size" name="promotion[preferred_group_size]" readonly style="border:0; color:#f6931f; font-weight:bold;">
     <div id="pref_group_size_slider" style="width:250px;"></div>
   </div>
   <div class="form-group">
     <label for="loss_tolerance">Loss Tolerance</label>
-    <input type="text" id="loss_tolerance" name="promotion[loss_tolerance]" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    <input type="text" class="inherit-input" id="loss_tolerance" name="promotion[loss_tolerance]" readonly style="border:0; color:#f6931f; font-weight:bold;">
     <div id="loss_slider" style="width:250px;"></div>
   </div>
   <div class="form-group">
     <label for="min_spend">Minimum Spend (per person):</label>
-    <input type="text" id="min_spend" name="promotion[min_spend]" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    <input type="text" class="inherit-input" id="min_spend" name="promotion[min_spend]" readonly style="border:0; color:#f6931f; font-weight:bold;">
     <div id="min_spend_slider" style="width:250px;"></div>
   </div>
   <div class="form-group">
     <label for="max_discount">Maximum Discount</label>
-    <input type="text" id="max_discount" name="promotion[max_discount]" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    <input type="text" class="inherit-input" id="max_discount" name="promotion[max_discount]" readonly style="border:0; color:#f6931f; font-weight:bold;">
     <div id="max_disc_slider" style="width:250px;"></div>
   </div>
   <div class="form-group">
-    <input type="submit">
+    <input type="submit" class="new-promo-submit btn">
   </div>
 <% end %>
 

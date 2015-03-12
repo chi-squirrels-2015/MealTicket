@@ -1,7 +1,7 @@
 class PromotionsController < ApplicationController
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @promotions = @restaurant.promotions  
+    @promotions = @restaurant.promotions
   end
 
   def new
