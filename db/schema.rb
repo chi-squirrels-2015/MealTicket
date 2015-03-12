@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311150439) do
+ActiveRecord::Schema.define(version: 20150312001506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 20150311150439) do
     t.string   "password_digest"
   end
 
+  add_index "restaurants", ["latitude"], name: "index_restaurants_on_latitude", using: :btree
+  add_index "restaurants", ["longitude"], name: "index_restaurants_on_longitude", using: :btree
+
   create_table "tickets", force: :cascade do |t|
     t.integer  "promotion_id"
     t.float    "discount"
@@ -69,5 +72,4 @@ ActiveRecord::Schema.define(version: 20150311150439) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
 end
