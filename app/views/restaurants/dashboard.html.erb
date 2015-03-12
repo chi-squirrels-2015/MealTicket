@@ -1,6 +1,7 @@
 <div class="container">
   <h1><%= current_restaurant.name %></h1>
   <h4>Welcome to MealTicket! Check out existing promotions and create new ones.</h4>
+  <%= link_to "New Promotion", new_promotion_path, class: "btn btn-primary" %>
   <% current_restaurant.promotions.not_expired.each do |promotion| %>
     <div class="col-md-4">
       <div class="btn btn-lg btn-primary btn-block">
@@ -9,7 +10,7 @@
       <%= render :partial =>  "promotions/ticket", locals: {promotion: promotion} %>
   <div class="col-md-4 all-promos">
     <h3 class="promo-header">Current Promotions</h3>
-    <% current_restaurant.promotions.each do |promotion| %>
+    <% current_restaurant.active_unexpired_promotions.each do |promotion| %>
       <div class="col-md-12 single-promo">
         <div class="view-tickets-btn-div btn btn-primary btn-block">
           <%= link_to promotion.name, promotion_tickets_path(promotion), class: "view-tickets-btn" %>
@@ -34,7 +35,7 @@
     <% end %>
 
     <h3 class="promo-header">Expired Promotions</h3>
-    <% current_restaurant.promotions.each do |promotion| %>
+    <% current_restaurant.expired_promotions.each do |promotion| %>
       <div class="col-md-12 single-promo">
         <%# if promotion.expired? %>
         <div class="view-tickets-btn-div btn btn-primary btn-block">
@@ -60,11 +61,6 @@
 
     </div>
   <% end %>
-    <div class="special-container col-md-4">
-      <div class="btn btn-lg btn-primary btn-block">
-        <%= link_to "New Promotion", new_restaurant_promotion_path(:restaurant_id => current_restaurant.id) %>
-      </div>
-    </div>
   <% end %>
 </div>
 
