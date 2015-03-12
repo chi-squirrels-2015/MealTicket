@@ -50,7 +50,7 @@ class RestaurantsController < ApplicationController
   end
 
   def closest
-    closest = Restaurant.near([params[:lat], params[:lng]], 2).joins(:promotions).where("valid_on >= '#{Date.today}'").where(:promotions => {:active => true})
+    closest = Restaurant.near([params[:lat], params[:lng]], 2).joins(:promotions).where("valid_on >= '#{Date.today}'")
     geojson = closest.map(&:to_geoJSON)
 
     geojson.each do |restaurant|
