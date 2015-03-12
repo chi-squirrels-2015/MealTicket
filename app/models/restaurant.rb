@@ -1,6 +1,8 @@
 class Restaurant < ActiveRecord::Base
   has_secure_password
   has_many :active_unexpired_promotions, -> { where(active: true).where("valid_on >= '#{Date.today}'") }, class_name: "Promotion"
+  has_many :expired_promotions, -> { where("valid_on < '#{Date.today}'")}, class_name: "Promotion"
+  has_many :inactive_promotions, -> { where(active: false) }, class_name: "Promotion"
   has_many :promotions
 
   validates :yelp_id, uniqueness: true
