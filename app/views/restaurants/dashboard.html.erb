@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= current_restaurant.name %></h1>
   <h3><%= current_restaurant.cuisine %></h3>
-  <% current_restaurant.promotions.each do |promotion| %>
+  <% current_restaurant.promotions.not_expired.each do |promotion| %>
     <div class="col-md-4">
       <div class="btn btn-lg btn-primary btn-block">
         <%= promotion.name %>
