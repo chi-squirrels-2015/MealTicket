@@ -5,13 +5,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.find_by_name(params[:name]).try(:authenticate, params[:password])
-  
+    @restaurant = Restaurant.find_by(email: params[:email]).try(:authenticate, params[:password])
+
     if @restaurant
       session[:restaurant_id] = @restaurant.id
       redirect_to dashboard_path
     else
-      render login_path
+      render :new
     end
   end
 
