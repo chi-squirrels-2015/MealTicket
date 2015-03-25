@@ -1,8 +1,7 @@
 MealTicket
 ==========
 
-*MealTicket is a Dev Bootcamp Phase 3 final
-project created by Matthew Gray, Edward Mitchell, Jane Kim, and Andrew Irwin.*
+*MealTicket is a Dev Bootcamp Phase 3 final project created by Matthew Gray, Edward Mitchell, Jane Kim, and Andrew Irwin.*
 
 ### Purpose
 
